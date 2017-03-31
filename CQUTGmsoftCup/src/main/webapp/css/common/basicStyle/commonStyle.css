@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	margin:0;
+	padding:0;
+	font-size:14px;
+	font-family:Microsoft YaHei;
+	/*background:#f6f6f6;*/
+}
+
+a:link,a:hover,a:active,a:visited{
+	text-decoration:none;
+	color:#333333;
+	cursor: pointer;
+}
+
+input{
+	/*去除蓝色边框*/
+	margin:0;
+	outline:none;
+}
+
+button{
+	/*按钮的样式*/
+	border:none;
+	padding:0;
+	list-style-type:none;
+	width:70px;
+	height:30px;
+	background-color:#8ab939;
+	color:#ffffff;
+	cursor: pointer;
+}
+
+label{
+	font-size:14px;
+	padding:10px;
+}
+
+p{
+	margin:0px;
+	padding:0px;
+}
+
+img{
+	border:0;
+}
+
+
+/*********标题-截止时间栏***********/
+.drawLineDiv{
+	 width:41%; 
+	 height:0px; 
+	 border-bottom:#c5c5c5 1px solid; 
+	 float:left;	
+	 margin-top:8px; 
+}
+.deadDateDiv{
+  float:left; 
+  height:5px; 
+  line-height:5px; 
+  margin:5px;
+  color:#fab432;
+  font-size:16px;
+}
+

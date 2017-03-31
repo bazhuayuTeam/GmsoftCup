@@ -1,0 +1,15 @@
+package com.cqut.dao.project.customInterface;
+
+import java.util.List;
+import java.util.Map;
+
+public interface IProjectMapDao {
+
+	public List<Map<String, Object>> findProjects(String[] property,
+			String condition, String sortField, String order, 
+			boolean needLink, int index, int limit);
+	
+	public int findCount(String[] properties, String condition, boolean needLink);
+	
+	public int updateProject(Map<String, Object> properties, String condition);
+}

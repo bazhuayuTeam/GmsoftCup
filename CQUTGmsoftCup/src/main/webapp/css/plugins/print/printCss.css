@@ -1,0 +1,15 @@
+
+.needPrint{
+	position:absolute;
+	top:0;
+	left:0;
+	margin:0;
+	padding:0;
+	background:#f00;
+}
+.notPrint{
+	display : none;
+}
+.afterPrint{
+	display : inline;
+}

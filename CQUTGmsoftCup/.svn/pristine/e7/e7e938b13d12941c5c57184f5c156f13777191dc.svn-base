@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+.table-content{
+	color:#75614d;
+}
+
+#curStudent{
+	color:#888888;
+	background-color:#f4f4f4;
+}
+
+.table-td{
+	color:#888888;
+	font-size:12px;
+	text-align:left !Important;
+}
+
+.addTextIndent{
+	text-indent: 6px;
+}
+
+#oneKeyPreservation{
+	float:right;
+	margin-top:15px;
+	cursor:pointer;
+}

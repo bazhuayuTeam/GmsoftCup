@@ -1,0 +1,72 @@
+/* {
+	margin:0px;
+	padding:0px;
+	border:0px;	
+}*/
+.content {
+	width:auto; 
+	height:auto; 
+	margin-left:20px;
+	margin-right:20px;
+}
+
+.assessContent {
+	width:auto; 
+	height:auto; 
+	border:solid 1px #afafaf;
+	margin-bottom:20px;
+	width:97%;
+}
+
+.eachTitle {
+	width:auto;
+	height:40px; 
+	background-color:#c3a080;
+}
+
+.majorTitle {
+	aligin:center;
+	font-family:Î¢ÈíÑÅºÚ;
+	font-size:15px;
+	line-height:40px;
+	color:#fff;
+	margin-left:20px;
+}
+
+.remark {
+	width:98%;
+	height:120px;
+	margin:10px;
+	font-family:Î¢ÈíÑÅºÚ;
+	font-size:13px;
+	line-height:20px;
+	border:0px;
+	resize:none;
+	background:#f6f6f6;
+}
+
+.saveEditExport{
+	font-family:Î¢ÈíÑÅºÚ;
+	font-size:13px;
+	color:#fff;
+	float:right;	
+	margin-top:12px;
+	margin-right:20px;
+	cursor:pointer;
+}
+
+.pictrue {
+	float:right;
+	margin-top:10px;
+	margin-right:2px;
+	cursor:pointer;
+	border:0px;
+}
+
+.updown {
+	float:right;
+	margin-top:15px;
+	margin-right:40%;
+	cursor:pointer;
+}
+

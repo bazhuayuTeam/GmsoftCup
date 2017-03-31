@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+.table-content{
+	color:#75614d;
+}
+.table-td{
+	color:#888888;
+	font-size:12px;
+	text-align:center !Important;
+		}
+	
+.table-td input{
+	text-align:center !Important;
+}
+
+ #majorTeacherCount,#PHDTeacherCount,#teacherStudentRate,#PHDTeacherRate,#hightTeacherRate,#includeRefereedCount,#curStudent{
+  	color:#888888;
+	background-color:#f4f4f4;
+ }

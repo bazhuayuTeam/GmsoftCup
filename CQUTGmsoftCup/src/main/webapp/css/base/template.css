@@ -1,0 +1,389 @@
+@CHARSET "UTF-8";
+  
+ 	.middle{
+         background: white;
+         width:960px;  
+         overflow:auto;
+         margin:0 auto;
+	}
+ 	
+	.middle_left{
+         width: 226px;
+         min-height: 437px;
+         float: left;
+         margin-left:10px;
+         height:auto;
+	}
+ 	.middle_left_search{
+ 		 width:226px;
+ 		 height:35px;
+         background:url(../../images/enterprisesEntered/search_bg2.png);
+	}
+
+  	.middle_left_search_all{
+          padding-top:5px;
+		  margin-left:5px;
+		  align:center;
+ 
+
+	}
+    .middle_left_search_control{
+         float:left;
+		 border:1px solid #1880e6;
+          
+	}
+	
+	#div_text{
+		width:130px;
+		border:1px solid #1880e6; 
+		height:23px;
+		line-height:23px;
+		float:left;
+		color:#b8b8b9;
+		text-indent:3px;
+	}
+	
+	#search_img{
+		width:54px;
+		border:0;
+		height:25px;
+		padding-left:3px;
+		border:0px;
+	}
+ 	.middle_left_main{
+           width: 224px;
+           min-height:330px;
+           margin-top: 7px;
+           border:1px solid #c3c2c2;
+           border-top:0px;
+           height:auto;
+	}
+	.middle_left_main_title{
+			margin:-1px;
+			width:226px;
+			background-image: url(../../images/enterprisesEntered/titleBg.png);/*background: url(../../images/enterprisesEntered/titleBg2.png) repeat-x;*/
+			text-align: center;
+			heigth:35px;
+			line-height:35px;
+	}
+	.middle_left_main_body{
+	      margin:0 auto;
+          width: 172px;
+          height:auto;
+          min-height: 178px;
+          padding: 0px; 
+          height: auto;
+	}
+	.middle_left_main_body ul{
+          margin: 0;
+          float: left;
+          width: 172px;
+          padding-left: 0px;
+          padding: 0;
+	}
+	.middle_left_main_body ul li{
+          margin: 0;
+          width: 100%;
+          height: 40px;
+          line-height: 43px;
+          list-style: none;
+          font-family: sim_sun;
+          font-size: 12px;
+          border-bottom:1px solid #79abe6;
+	}
+	.middle_left_main_body ul li a{
+		text-decoration:none;
+		color:#333;
+		display: block;
+		height: 100%;
+		width: 100%;
+		line-height: 43px;
+		background: url("../../images/enterprisesEntered/list_ico.png");
+		background-repeat: no-repeat;
+		background-position: 30px center;
+	}
+	.middle_left_main_body ul li a:hover {
+		color:#fb4e18;
+		text-decoration:underline;
+	}
+	
+	.middle_left_main_body ul li a span{
+		margin-left: 55px;
+	}
+	.middle_right{
+          min-height:437px;
+          float: right;
+          margin-right:10px;
+          width:705px;
+  
+	}
+	.middle_right_top{
+          width: 702px;
+          height: 35px;
+          line-height: 38px;
+          background-color: #f4f4f4;
+          font-size: 12px;
+          font-family: SimSun;
+          text-indent: 20px;
+          letter-spacing: 2px;
+          color:#3a3b3b;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+			-o-text-overflow:ellipsis;
+			overflow:hidden;
+	}
+	.middle_right_top a{
+		color:#3a3b3b;
+		text-decoration:none;
+	}
+    .middle_right_top a:hover{
+           text-decoration: underline ;
+    }
+	.middle_right_main{
+           width: 700px;
+           min-height:447px;
+           height:auto;
+           margin-top: 7px;
+           border:1px solid #D7D6D6;
+           border-top:0px;
+           overflow:hidden;
+	}
+	.middle_right_main_title{
+           width: 700px;
+           height:33px;
+           line-height: 33px;
+           margin: 0;
+           background-image: url(../../images/enterprisesEntered/title_bar.PNG);
+	}
+
+	.news{
+	    width: 682px;
+	    border: 0px;
+	    margin:0 auto;
+	    font: normal;
+	    margin-top:10px;
+	    font-size: 12px;
+	    /*text-align: justify;*/
+	    word-break: break-all; 
+	    word-wrap:break-word;
+	    text-justify :distribute-all-lines;
+	    height:auto;
+
+	}
+	
+	.news *{
+		max-width: 682px;
+	}
+	.news-list{
+		list-style:none;
+		padding-left:0px;
+		padding-top : 0px;
+		position: relative;
+	}
+	
+	.news .news-list li{
+		height:25px;
+		line-height:26px;
+		font-size:12px;
+		border-bottom:1px dashed #c3c2c2;
+		position: relative;
+	}
+	.news .news-list li a{
+		display:block;
+		overflow:hidden; 
+		color:#3a3b3b;
+		width:560px;
+		height:25px;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		text-decoration:none;
+		float:left;
+	}
+	.news .news-list li a:hover{
+		text-decoration:underline;
+		color:#f90415;
+	}
+	
+	.news .news-list li span.news-time
+	{
+		line-height:26px;
+		height:25px;
+		float:right;
+		text-align:right;
+	}
+	
+	#div_image{
+		height:170px;
+		background:url(../../images/enterprisesEntered/diamonds.png);
+		margin-top:50px;
+
+	}
+	
+	#font_H{
+		color:#fff;
+		font-weight:bold;
+		font-size:14px;
+		text-align:center;
+		font-weight: bold;
+	}
+	.li_img{
+		padding-right:10px;
+		vertical-align: middle;
+	}
+	
+	#img_arrow{
+		margin:10px;
+		float:left;
+	}
+	
+	#p_intro{
+		font-weight:bold;
+		font-size:14px;
+		font-family:sim_sun;
+		color:#3a3b3b;
+	}
+	
+	.list_bg_position
+	{
+		padding-right:5px;
+		border:0;
+		padding-bottom:3px;
+	}
+	
+	
+	#blank{
+		color:red;
+		text-align:center;
+		margin-top:20px;
+	}
+	
+	#content_title{
+		margin: 15px;
+		font-weight: bold;;
+		font-size: 14px;
+		text-align: center;
+		line-height:14px;
+	}
+	
+	#line_dot{
+		/*letter-spacing: 1px;*/
+		width:auto;
+		border-top:1px dashed #c3bfbf;
+	}
+	
+	#about_content{
+		color: red;
+		text-align: center;
+		font-size: 12px;
+		margin-top:10px;
+		margin-bottom:15px;
+		line-height:12px;
+	}
+	
+	#releaseTime{
+		margin-right:20px;
+	}
+	
+	#content_detail{
+		font-size: 12px;
+		line-height: 20px;
+	}
+	#back{
+		border-bottom:1px dashed #3a3b3b;
+		margin-top:25px;
+		height:25px;
+		
+	}
+	#back a{
+		float: right;
+		color:#3a3b3b;
+		font-size: 14px;
+		text-decoration:none;
+		padding:5px;
+	}
+    #back a:hover{
+           text-decoration: underline ;
+    }
+    
+    .pic-item{
+		float:left;
+		height:178px;
+		width:151px;
+		text-align:center;
+		background-color:white;
+		margin-left:6px;
+		border:1px solid #ededee;
+		box-shadow: 2px 2px 5px #9e9b9b;
+		margin-top : 6px;  
+   }
+   
+.pic-item img{
+	width: 148px;
+	margin : 0 auto;
+	height : 155px;
+	border:0;
+}
+
+.pic-item span{
+	display: block;
+	width:148px;
+	overflow: hidden;
+	height : 2em;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	color:#3b3b3b;
+}
+
+.pic-item span,.pic-item a {
+	line-height: 2em;
+	text-decoration: none;
+}
+
+.pic-item a:HOVER span{
+	text-decoration: underline;
+	color:red;
+}
+
+.pic-item a:HOVER img{
+	opacity : 0.8;
+}
+
+#pager{
+	clear: both;
+}
+
+/****附件*****/
+
+.fileArea{
+	padding:10px;
+	margin-top:20px;
+}
+
+.fileArea legend{
+	margin-left:20px;
+}
+
+.fileArea #filesList{
+	list-style: none;
+}
+.fileArea #filesList li{
+	border-bottom: 1px lightgray dashed;
+	font-size: 12px;
+	overflow: hidden;
+	line-height: 1.5em; 
+}
+
+.fileArea #filesList li a{
+	color:#333;
+}
+
+.fileArea #filesList li a:hover{
+	text-decorat
+	ion: underline;
+	color:red;
+}
+
+#news-content *{
+	line-height: 1.5em;
+}

@@ -1,0 +1,123 @@
+*{border:0;margin:0;padding:0;}
+ body{
+     background-color:#F6F6F6;
+     overflow:hidden;
+ }
+ .mainContent{
+     height:100%;
+     width:100%;
+     min-width:1160px;
+ }
+ .area{
+     float:left;
+     height:100%;
+ }
+ .mainContent .area_left{
+     width:68%;
+ }
+ .mainContent .area_right{
+     width:32%;
+     margin-top:1%;
+ }
+ .area_left_prompt{
+     float:right;
+     height:230px;
+     width:34%;
+     margin:2% 16px 0;
+     padding-top:32px;
+     color:#ffffff;
+     display:none;
+ }
+ .area_left_currentStatus{
+     background:#8ab939;
+     width:190px;
+     height:95px;
+     margin-left:80px;
+ } 
+ .area_left_recentFestival{
+     background:#c3a080;
+     width:125px;
+     height:87px;
+     float:right;
+     margin-top:12px;
+ }
+ .area_left_finishStatus{
+     background:#fab432;
+     width:125px;
+     height:87px;
+     margin-top:12px;
+ }
+ .area_left_calender{
+     height:195px;
+     background-color:#FFFFFF;
+     margin:1% 16px 0 16px;
+     width:60%;
+ }
+ .area_left_common{
+     background-color:#FFFFFF;
+     height:220px;
+     margin:2% 16px 0 16px;
+     min-width:700px;
+     display:none;
+ }
+ .area_right_common{
+     background-color:#FFFFFF;
+     height:49%;
+     display:none;
+ }
+ .area_common_title{
+     width:120px;
+ }
+ .area_common_titlePic{
+     margin:10px 15px 15px 20px;
+ }
+ .area_common_titleContent{
+     font-size:16px;
+     font-family:Microsoft YaHei;
+     
+ }
+ .area_common_titleContent:hover{
+     cursor:pointer;
+ }
+ .area_common_titlePromptIcon:hover{
+      cursor:pointer;
+ }
+ .area_common_item{
+     width:42%;
+     margin-left:16px;
+     padding-top:5px;
+     padding-left:4px;
+     min-width:350px;
+     float:left;
+ }
+ .area_common_item:hover{
+     cursor:pointer;
+     background-color:#F6F6F6;
+ }
+ .area_common_itemPic{
+     margin:0px 15px 5px 0;
+ }
+ .area_common_itemTitle{
+     font-size:15px;
+     font-family:Microsoft YaHei;
+ }     
+ .area_common_itemContent{
+     font-size:13px;
+     color:#9a9a9a;
+ }
+ .area_common_itemContent_detail{
+      margin:3px 5px 3px 29px;
+ }
+ .area_common_itemContent_status{
+     /* color:#8ab939; */
+    margin:3px 0px 3px 29px;
+}
+.area_common_itemContent_date{
+    float:right; 
+    margin-right:5px;       
+}
+.nodata{
+	text-align: center;
+    heigh:100%;
+    line-height:90px;
+}

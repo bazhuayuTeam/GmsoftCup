@@ -1,0 +1,28 @@
+@CHARSET "utf-8";
+/* CSS Reset */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	margin:0;
+	padding:0;
+}
+img{border:0;}
+ol, ul {list-style:none;}
+/*个人桌面设置*/
+html{width:100%;height: 100%;overflow: auto; }
+body{background-color: #DEEEF8;}
+#content{width: 100%;border-top: 1px solid #ABD8F9;overflow: auto;}
+#contentList{width: 700px;height: 350px;margin: 40px auto 0;}
+.list{height: 100%;float: left;display: inline;}
+#listLeft{width: 298px;border: 1px solid #91C0E3;}
+#middleTool{width: 50px;}
+#listRight{width: 298px;border: 1px solid #91C0E3;}
+#rightTool{width: 50px;}
+.ul{margin-top: 124px;}
+.li{padding: 5px 17px;}
+#contentList img{cursor: pointer;}
+.listBar{height: 22px;width: 293px;background: url(../../../images/module/person/browser_title_bar_bg.gif);padding-left: 5px;padding-top: 5px;text-align: left;color: #004A7D;font-size: 13px;font-weight: bold;}
+.columnList{width: 100%;height: 323px;overflow: auto;}
+.columnList li{padding-left: 8px;padding-top: 3px;font-size: 13px;}
+.columnList li a{cursor: pointer;}
+.columnList li a:VISITED {
+	background-color: red
+}

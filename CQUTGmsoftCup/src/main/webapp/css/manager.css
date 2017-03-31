@@ -1,0 +1,124 @@
+.team{
+    width: 100%;
+    line-height: 40px;
+    margin-top: 25px;
+}
+.team span{
+    background-color: #52acea;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 10px;
+}
+.team-info{
+    font-size: 14px;
+    margin: 0 auto;
+    width: 95%;
+}
+.team .title{
+    background-color: #dee8ee;
+    height: 40px;
+    position: relative;
+}
+
+.team-info label{
+    float: left;
+    color: #000000;
+}
+.team-info div{
+    float: left;
+    color: #52acea;
+}
+
+.team-info .team-name{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.team-info .team-title{
+    margin-right: 10px;
+}
+.teams{
+    border: 1px solid #cccccc;
+    border-top: none;
+    padding-top: 10px;
+}
+.teams .te{
+    color: #ECC755;
+    cursor: pointer;
+}
+.teams .bule{
+    margin-right: 0;
+    margin-top: 0;
+    position: absolute;
+    right: 0;
+    width: 12%;
+}
+.teams .input{
+    position: absolute;
+    left: 12%;
+    position: absolute;
+}
+.teams .register{
+    position: relative;
+    width: 90%;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    right :0;
+    cursor: default;
+}
+
+.team .register-teacher{
+    background-color: #fff;
+    border: medium none;
+    left: 0;
+    position: absolute;
+    height: 40px;
+}
+.team .upload{
+	border: 0 none;
+    height: 40px;
+    left: 30%;
+    position: absolute;
+	}
+.teams .teams-info{
+    width: 90%;
+    margin: 10px auto 30px;
+
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+}
+.teams table{
+    font-size: 14px;
+}
+.teams table tr{
+    height: 40px;
+    line-height: 25px;
+}
+
+.teams table tr td,.teams table tr th{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #cccccc;
+    background-color: #ffffff;
+    text-align: center;
+    min-width: 12.5%;
+    font-size :12px;
+}
+.team .input{
+	height: 15px;
+    margin-right: 2%;
+    position: absolute;
+    right: 0%;
+    top: 13px;
+    width: 18px;
+}
+.team .register-teames{
+	background-color: #fff;
+    border: medium none;
+    height: 40px;
+    left: 15%;
+    position: absolute;
+}

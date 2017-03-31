@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+a {
+	text-decoration: none;
+}
+
+#graduatedCase{
+    font-size: 13px;
+}
+
+#graduatedCase td{						
+	height:40px;
+}
+#graduatedCase td textarea{
+     height:40px;
+     width:99%;
+     text-indent: 5px;
+     font-size: 13px;		
+     border:0;			     
+     resize:none;
+}
+.target{
+	width:30%;
+}
+#graduatedCase td textarea{
+    overflow-y:auto;
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!--
+		用户相关 <package name="user" extends="struts-default"> <action
+		name="Login" class="loginAction"> <result>/index.jsp</result> <result
+		name="input">/login.jsp</result> </action> </package>
+	-->
+	<!-- 设置Struts 2默认的ObjectFactory为spring -->
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.action.excludePattern" value="/dwr/.*"/>
+	<!-- 注解的action配置改变时候不需要重新启动tomcat  -->
+	<constant name="struts.convention.classes.reload" value="true" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 开发模式 -->
+	<!-- 开发模式 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />  
+	<constant name="struts.devMode" value="true" /> 
+	<!--权限拦截器  -->
+	<!-- 
+	<package name="interceptor" extends="struts-default">
+		<interceptors>
+			<interceptor name="personPowerManager" class="com.cqut.action.PersonPowerManager" />
+		</interceptors>
+	</package>
+	 -->
+
+	<!--通用的 image,music,video 等-->
+	<package name="common" extends="struts-default" namespace="/common">
+	
+	<result-types>
+	    <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+	</result-types>
+		<action name="image"  class="com.cqut.action.common.ImageAction">
+			<result name ="success" type="stream">
+				<param name="contentType">${FILE_TYPE}</param>
+                <param name="inputName">imageStream</param>
+                <param name="bufferSize">${BUFFERED_SIZE}</param>
+			</result>
+			<result name ="error">/error.jsp</result>
+		</action>
+		<action name="file"  class="com.cqut.action.common.FileAction">
+			<result name ="success" type="stream">
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+                <param name="inputName">imageStream</param>
+                <param name="bufferSize">${BUFFERED_SIZE}</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+			</result>
+			<result name ="error" type="redirect">/fileNotFound.jsp</result>
+		</action>
+		
+		 
+	</package>
+	
+	<package name="default" extends="struts-default" namespace="/api">
+		<interceptors>
+			<interceptor name="illegalCharacterInterceptor" class="com.cqut.util.struts.IllegalCharacterInterceptor" />
+			<interceptor name="loginInterceptor" class="com.cqut.util.struts.LoginInterceptor" />
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="illegalCharacterInterceptor"></interceptor-ref>
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+		<action name="operator_*" class="com.cqut.action.operator.OperatorAction" method="{1}"></action>
+		<action name="user_*" class="com.cqut.action.user.UserAction" method="{1}"></action>
+	</package>
+	
+	<package name="loginAddRegister" extends="struts-default" namespace="/api">
+		<action name="login_*" class="com.cqut.action.login.LoginAction" method="{1}"></action>
+		<action name="user1_*" class="com.cqut.action.user.UserAction" method="{1}"></action>
+		<action name="operator1_*" class="com.cqut.action.operator.OperatorAction" method="{1}"></action>
+	</package>
+</struts>

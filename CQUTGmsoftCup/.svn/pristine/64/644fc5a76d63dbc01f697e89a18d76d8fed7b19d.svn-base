@@ -1,0 +1,47 @@
+.inputTextarea{
+	height:150px;
+	resize:none;
+	width: 576px;
+	overflow:auto;
+}
+td{
+	position: relative;
+}
+td > img{
+	position:absolute;
+	right:-10px;
+	top:6px;
+}
+
+.propertyName{
+	white-space: nowrap;
+	text-align: right;
+}
+
+.textAreaStart{
+	color:red;
+	position:relative;
+	top:-60px;
+}
+
+.addCourseBtn{
+	width:202px;
+	position: relative;
+	left:212px;
+}
+
+.hint{
+	color:red;
+}
+
+.searchInput{
+	/*position:absolute;*/
+	top:1px;
+	z-index: 100;
+}
+
+/* .propertyNameDiv{
+	height:125px;
+ }*/
+
+

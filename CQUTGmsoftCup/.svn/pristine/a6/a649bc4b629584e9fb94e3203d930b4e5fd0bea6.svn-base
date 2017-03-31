@@ -1,0 +1,96 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+.mainBody{
+	height:470px;
+	width:540px;
+	margin-left:20px;
+	margin-top:15px;
+}
+
+.topOfEdit{
+	width:540px;
+	height:40px;
+	background-color:#f3ece6;
+	border-style:solid;
+	border-width:2px;
+	border-color:#c3a080;
+}
+
+.editTitle{
+	font-family:Microsoft YaHei;
+	font-size:15px;
+	font-color:#333333;
+}
+
+.lableWord{
+	/*lable的字体样式*/
+	font-family:Microsoft YaHei;
+	font-size:14px;
+	text-align: right;
+	padding-right:10px;
+}
+.lableWordBig{
+	font-family:Microsoft YaHei;
+	font-size:14px;
+	text-align: right;
+	padding-right:10px;
+	padding-bottom:92px;
+}
+
+.inputEdit{
+	width:200px;
+	height:22px;
+	text-align:left;
+}
+
+textarea{
+	 resize:none;
+	 width:350px;
+	 height:135px;
+	 font-size:13px;
+}
+
+.buttonOfGreen{
+	min-width:60px;
+	height:26px;
+	border:0;
+	color:#ffffff;
+	background-color:#8ab939;
+	margin-left:10px;
+	cursor:pointer;
+}
+
+.explainInput{
+	width:350px;
+	height:135px;
+	margin-top:5px;
+}
+
+.buttonOfGray{
+	min-width:60px;
+	height:26px;
+	border:0;
+	color:#ffffff;
+	background-color:#c3a080;
+	margin-left:10px;
+	cursor:pointer;
+}
+tr{
+	height:35px;
+	width:540px;
+}
+td{
+	white-space:nowrap;
+}
+
+.select{
+	outline:none;
+	width:202px;
+	height:24px;
+	text-align:left;
+}
+.starColor{
+	color:#e79601;
+}

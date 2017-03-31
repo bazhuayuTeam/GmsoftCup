@@ -1,0 +1,57 @@
+;
+var data = ChildDialogUtil.getExchangeData();
+var jspData = {
+	dialogTitle : $("#dialog-modal"),
+	clickDownTitle : $("#clickDownData"),
+	record : $("#scoreNum")
+};
+//全局变量
+var pageData={
+	currentIndexSys: '',//当前的指标体系
+	currentIndexVersion:'',//版本
+};
+
+/*-----------------------入口----------------------------------------*/
+//加载
+$(function(){
+	if(ChildDialogUtil.getExchangeData()) {
+		var targetSysVersionID = ChildDialogUtil.getExchangeData().targetSysVersionID;
+		forbid();
+		defaultInit(targetSysVersionID);
+	}else{
+		
+		load();
+	}
+});
+
+//刚开始的加载
+function load(){
+	$("body").niceScroll({scrollspeed : 20,horizrailenabled: false});
+	//(1)加载所有的指标体系
+	loadTargetTable();
+}
+
+/**
+ * 加载表格（封装的）
+ */
+function loadTargetTable(){
+	$("#MainArea").mask("正在加载中,请耐心等候......");
+	var targetSetting={
+			isHaveExpert:false,//是否是专家
+			isHaveAuditPerson:false,//是否是审核人员
+			isOperator:false,//是否有操作
+			isDifferent:false,//是否各行换色
+			isExplain:true,//是否有解释
+			isTdmouseEvent:false,
+			tableTitle:['一级指标','二级指标','主要观测点','指标说明'],
+			tableTitleWidth:[10,10,30,50],
+			targetCodes:new Array(),
+			isChangeColor:true,
+			targetSysVersionID:pageData.currentIndexVersion
+	};
+	
+
+	targetTable(targetSetting);//加载表格
+	
+	$("#MainArea").unmask();
+}

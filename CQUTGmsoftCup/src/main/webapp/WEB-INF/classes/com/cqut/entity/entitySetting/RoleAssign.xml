@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+	<relation>
+		<source>
+			RoleAssign.roleid
+		</source>
+		<target classAlias="role" linkType="0">
+			Role.roleid
+		</target>
+	</relation>
+	<relation>
+		<source>
+			RoleAssign.operatorID
+		</source>
+		<target classAlias="oper" linkType="0">
+			Operator.operatorID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			RoleAssign.roleAssignId
+		</source>
+		<target classAlias="me" linkType="0">
+			RoleAssign.roleAssignId
+		</target>
+	</relation>
+</setting>

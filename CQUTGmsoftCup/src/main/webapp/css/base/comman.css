@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* CSS Document */
+* {padding:0;margin:0;}
+a {text-decoration:none; color:#333333; cursor:pointer;}
+/*一个表格最外层的div*/
+.content{
+	margin:20px;
+	width:auto;
+}
+/*表格的标题的外部div*/
+.title{
+	width:100%;
+	height:16px;
+	line-height:16px;
+	color:#333333;
+}
+/*表格的标题*/
+.table-title{
+	font-family:"微软雅黑";
+	font-size:16px;
+	float:left;
+	font-weight: bold;
+	color: #555;
+}
+/*表格的操作*/
+.table-operation{
+	font-family:"宋体";
+	font-size:12px;
+	float:right;
+	height:16px;
+	margin-left:20px;
+}
+.table-operation img{
+	vertical-align:middle;
+	padding-right:5px;
+}
+/*表格的操作*/
+.table-operation:hover{
+	color:#3366FF;
+	cursor:pointer;
+}
+/*表格标题下的分割线（有搜索）*/
+.cut-off-line{
+	width:auto;
+	height:1px;
+	background-color:#c6c6c6;
+	margin-top:5px;	
+	margin-bottom:10px;
+}
+/*表格标题下的分割线（无搜索）*/
+.cut-off-line-nosearch{
+	width:auto;
+	height:1px;
+	background-color:#c6c6c6;
+	margin-top:5px;	
+	margin-bottom:20px;
+}
+/*搜索的外部div，若搜索有两排，请用两个search的div块，并将第一个div块的margin-bottom改为10px*/
+.search{
+	width:auto;
+	height:28px;
+	line-height:28px;
+	margin-bottom:10px;
+}
+/*搜索的标题及输入框格式*/
+.search p,.search input,.search select{
+	float:left;
+	font-family:"宋体";
+	font-size:13px;
+	color:#3333333;
+}
+.search p{
+	margin-right:10px;
+	text-align:right;	
+	line-height:28px;
+}
+/*搜索文本框*/
+.search input[type="text"] {
+	width:190px;
+	height:20px;
+	text-indent:5px;
+	margin-right:30px;	
+}
+/*搜索下拉框*/
+.search select {
+	width:190px;
+	height:26px;
+	/*text-indent:5px;*/
+	margin-right:30px;	
+}
+/*水印的颜色*/
+.water-mark{
+	color:#a4a4a4;	
+}
+/*搜索按钮*/
+.search input[type="button"] {
+	height:29px;
+	width:66px;	
+	line-height:2px;
+	margin-top:-1px;
+}
+
+/*数据分析块样式*/
+
+.analysis{
+	margin-top:20px;
+	clear:both;
+}
+
+/*分析的标题*/
+.analysisTitle{
+	font-family:"微软雅黑";
+	font-size:16px;
+	float:left;
+}
+
+/*分析数据iframe*/
+.analysis>iframe{
+     border:0px;
+     width:100%;
+}
+
+/*反馈问题*/
+.reportProblem{
+	float: right;
+	position: relative;
+	cursor: pointer;
+	display: none;
+}
+
+.reportProblem span{
+	position: relative;
+	bottom: 5px;
+	font-family: "宋体";
+    font-size: 12px;
+    left: 4px;
+}
+
+.rpRelative{
+	bottom: 16px;
+}
+
+
+
+
+
+

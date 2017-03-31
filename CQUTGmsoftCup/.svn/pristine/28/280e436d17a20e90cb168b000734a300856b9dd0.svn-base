@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+	<relation>
+		<source>
+			crew.userId
+		</source>
+		<target classAlias="cr"  linkType="0">
+			user.userId
+		</target>
+	</relation>
+	<relation>
+		<source>
+			cr.academy
+		</source>
+		<target classAlias="ac"  linkType="0">
+			academic.academicId
+		</target>
+	</relation>
+	<relation>
+		<source>
+			crew.userId
+		</source>
+		<target classAlias="me"  linkType="0">
+			crew.userId
+		</target>
+	</relation>
+</setting>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+	<relation>
+		<source>
+			operator.operatorID
+		</source>
+		<target classAlias="roa"  linkType="0">
+			roleassign.operatorID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			operator.ZGH
+		</source>
+		<target classAlias="js" linkType="0">
+			JSXXB.ZGH
+		</target>
+	</relation>
+	<relation>
+		<source>
+			operator.disciplineID
+		</source>
+		<target classAlias="major" linkType="0">
+			Discipline.disciplineID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			operator.academicID
+		</source>
+		<target classAlias="aca" linkType="0">
+			Academic.academicID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			operator.operatorID
+		</source>
+		<target classAlias="me" linkType="0">
+			operator.operatorID
+		</target>
+	</relation>
+</setting>

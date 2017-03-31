@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+.navigate{
+	float:left;
+	width:1200px;
+	height:20px;
+}
+.navigate img{
+	width:10px;
+	height:15px;
+	float:left;
+	padding-right:5px;
+	position: relative;
+	top:2px;
+}
+.navigate span{
+	font-size:14px;
+	float:left;
+}
+

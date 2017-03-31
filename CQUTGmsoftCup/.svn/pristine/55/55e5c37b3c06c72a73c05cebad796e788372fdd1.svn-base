@@ -1,0 +1,261 @@
+
+
+body{
+	width:auto;
+	min-width:1000px;
+	min-height: 800px;
+	overflow: hidden;
+}
+
+/* ���岿��*/
+.subject{
+/*	width:auto;
+	height:auto;
+	margin: 0px 20px;
+	position: relative;
+	display:table;
+	*/
+	position:absolute!important;
+	position:relative;
+	top:29px!important;
+	top:0;
+	bottom:1px;
+	width:100%;
+	overflow:hidden;
+	height:auto!important;
+	height:100%;
+}
+
+
+
+/*��ѯ����*/
+.condition{
+	position: relative;
+}
+
+/*���table��Div*/
+.tableDiv{
+	/*position: relative;
+	overflow:auto;
+	width: 100%;
+	min-height:600px;
+	min-width:1000px;
+	top: 10px;
+	*/
+	overflow:auto;
+	height:100%;
+}
+
+.tableDiv td {
+	padding: 10px;
+}
+
+/*��������ֱ�ӵľ���*/
+.length{
+	margin-right:73px;
+}
+
+/*����������*/
+.conditionText{
+	position: relative;
+	top:26px;
+	left:2px;
+}
+.conditionText input {
+	position: relative;
+	top: 2px;
+}
+
+.conditionText > div {
+	width:200px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*最外层的条件div*/
+.outerConditionDiv {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	top:159px;
+	z-index:10;
+}
+
+
+
+/*.show table{
+	 border-collapse:collapse;
+	 width: 100%;
+}
+.show table,.show td,.show th{
+	border:1px solid #afafaf;
+	min-width:300px;
+}
+
+.show td{
+	min-width:300px;
+	height:38px;
+}*/
+
+.show span{
+	position: relative;
+	top:-2px;
+	left:2px;
+}
+
+.textCenter{
+	text-align: center;
+	line-height:38px;
+}
+
+
+/*��ֵ�е�������ʽ*/
+.scoreLine{
+	font-family: "΢���ź�";
+	font-size: 14px;
+	color: #333333;
+}
+
+/*li��ǩ��������ʽ*/
+.sortedLi{
+	cursor:pointer;
+}
+/*�����ı���ȷ����ť*/
+.myBtn {
+	width:100%;
+	height:100%;
+	cursor: pointer;
+	font-size: 16px;
+	color: #2072b3;
+}
+
+.major{
+	min-width:80px;
+}
+
+td{
+	position:relative;
+	word-break: keep-all;
+}
+
+.hideImg {
+	cursor: pointer;
+}
+
+.table-operation {
+	float:right;
+	cursor: pointer;
+}
+
+.couldSelect {
+	cursor: pointer;
+}
+
+.isSelected {
+	border : 2px solid rgb(44, 164, 245);
+}
+
+/*条件表格里的样式开始*/
+
+.show{
+	width:97%;
+	height:550px;
+	display: none;
+	background-color: #ffffff;
+	margin-left:18px;
+	z-index:10;
+	border: 1px solid #afafaf;
+	position: relative;
+}
+
+.conditionTitle,.outerTableDiv{
+	left:15px;
+}
+.conditionTitle {
+	position: absolute;
+	top: 0px;
+	height: 50px;
+}
+.conditionTitle span,.conditionTitle button{
+	position: relative;
+}
+.conditionTitle span{
+	font-size: 18px;
+	color: #75614d;
+	top:11px;
+}
+.conditionTitle button{
+	width: 125px;
+	height: 33px;
+	background-color: #2e2e2e;
+	color: #ffffff;
+	font-size: 16px;
+	top:10px;
+	margin-left: 15px;
+	cursor: pointer;
+}
+
+.outerTableDiv {
+	position:absolute!important;
+	position:relative;
+	top:50px!important;
+	top:0;
+	bottom:26px;
+	width:99%;
+	overflow:hidden;
+	height:auto!important;
+	height:100%;
+	max-height:500px;
+	left:0px;
+}
+
+.innerTableDiv {
+	height:98%;
+ 	overflow-y:auto;
+ 	z-index: 20;
+}
+
+.innerTableDiv table td {
+	text-align: left;
+	padding-left: 10px;
+	min-width: 180px;
+}
+
+.innerTableDiv table td label{
+	cursor: pointer;
+}
+
+.condtionDivFooter{
+	position: absolute;
+	bottom: 0;
+	height: 26px;
+	width: 100%;
+}
+
+/*条件表格样式 结束*/
+
+/*专业条件表格里每个专业的样式*/
+.majorDiv{
+    width: 250px;
+    margin-right: 25px;
+}
+
+.academicDiv ,.majorDiv,.sortedTargetDiv{
+	float: left;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+/*排序指标的div样式*/
+#targetSortedShowTableDiv table{
+	height: 100%;
+}
+.sortedTargetDiv {
+}
+
+
+

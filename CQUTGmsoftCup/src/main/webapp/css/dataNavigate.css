@@ -1,0 +1,182 @@
+@CHARSET "UTF-8";
+body{
+	background:#ffffff;
+	height:auto;
+	overflow-y:hidden;
+}
+/*a{
+	text-decoration: none;
+	 font-size:12px;
+     font-family:'Microsoft YaHei';
+     color:#333333;
+}*/
+a{
+	cursor:pointer;
+}
+/*第一层*/
+.horizontal{
+	font-size:14px;
+	color:#333333;
+	font-family:'Microsoft YaHei';
+	margin-left:0px;
+	margin-top:5px;
+	z-index:999;
+	height:45px;
+	
+}
+/*hover时特效*/
+.head{
+	display:none;
+	height:2px;
+	background:#ff5a00;
+	margin-top:-9px;
+	margin-bottom:8px;
+}
+/*
+.labelName{
+	margin-top:10px;
+}*/
+
+.horizontal li {
+	float:left;    
+	position: relative;
+	height:30px;
+	padding:10px 0px 3px 0px;	
+	line-height:20px;
+}
+/*竖线*/
+.line{
+	margin-top:-9px;
+}
+.horizontal li a{		
+    	text-decoration: none;
+	   font-family:'Microsoft YaHei';
+       color:#333333;
+       font-size:16px;
+       margin:0px  20px;
+      
+}
+
+
+#studentCase{
+     background:#fafafa;
+     font-size:12px;
+     font-family:'Microsoft YaHei';
+     color:#333333;
+}
+
+/*.ul li{
+	padding-left:10px;
+	padding-top:10px;
+	padding-right:0;
+}*/
+
+.horizontal ul li span{
+	margin:0 20px;
+}
+
+/*第二层*/
+.level2{
+	 display:none;	 
+	 margin-top:14px;
+	 font-size:14px;
+     font-family:'Microsoft YaHei';
+     color:#333333;
+	 position: absolute;
+	 background:#ffffff;
+	 border-left: 1px solid #c5c5c5;
+	 border-right: 1px solid #c5c5c5;
+	 border-top: 1px solid #c5c5c5;
+}
+.level2 ul li {
+	clear:both;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+	height:35px;
+	width:240px;
+	border-bottom:1px solid #d0d0d0;
+	line-height:3;
+	
+}
+.level2 ul li a{
+	text-decoration: none;
+	 font-size:14px;
+     font-family:'Microsoft YaHei';
+     color:#333333;
+	margin-left:20px;
+	margin-top:20px;
+}
+.trangel{
+/* 	margin-left:30px;
+ */	margin-right:8px;
+ 	float: right;
+ 	margin-top:15px;
+}
+
+.level2 li:hover{
+	background:#f3ece6;
+}
+
+/*第三层*/
+.level3{
+	 display:none;
+	 margin-left:240px;
+	 margin-top:-1px;
+	 top:0px;
+	 position: absolute;
+	 background:#ffffff;
+	 width: 240px;	
+	 border-left: 1px solid #c5c5c5;
+	 border-right: 1px solid #c5c5c5;
+	 border-top: 1px solid #c5c5c5;
+}
+.level3 li{
+    height:35px;
+	border-bottom:1px solid #d0d0d0;
+	line-height:3;
+	width: 240px;
+}
+
+.level3 li:hover{
+	background:#f3ece6;
+}
+.level3 li a{
+	margin-left:20px;
+	/* line-height: 25px;*/
+}
+/*数据显示部分*/
+#dataPart{
+	z-index:0;
+	clear:both;
+	border:0;
+	background-color: #f6f6f6;
+	width: 100%;
+}
+
+.spanClass {
+	font-size:14px;
+	font-family:Microsoft YaHei;
+	margin-left:2px;
+	margin-bottom:10px;
+}
+
+/*一级指标过长时*/
+.firstTooLang{
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:0px;
+	height: 38px;
+}
+
+/*验证和返回*/
+.judgeAndReturn{
+	font-size:14px;
+	font-family:Microsoft YaHei;
+	color: #9a9a9a;
+	float:right;
+	margin-left:2px;
+	border-left: 1px solid #9a9a9a;
+	width:44px;
+	text-align: center;
+}

@@ -1,0 +1,72 @@
+@CHARSET "UTF-8";
+
+.turnPage{
+	height:34px;
+	background-color:#eceaea;
+	line-height:34px;
+}
+
+.pageContent{
+	font-size:12px;
+	height:34px;
+	border-right:1px solid #c3a080;
+	border-bottom:1px solid #c3a080;
+	border-left:1px solid #c3a080;
+}
+
+#centerPage{
+	min-width:300px;
+	width:40%;
+	float:left;
+	margin-left:30%;
+}
+
+.pageCenter{
+	width:300px;
+	margin:0 auto;
+}
+
+#currentPage{
+	width:55px;
+	height:20px;
+	border:1px solid #c5c5c5;
+	margin-top:5px;
+	font-size:12px;
+}
+#totalPage{
+	margin-left:4px;	
+}
+#firstPageBtn{
+	margin-right:10px;
+	cursor: pointer;
+}
+
+#previousPageBtn{
+	margin-right:20px;
+	cursor: pointer;
+}
+
+#nextPageBtn{
+	margin-left:20px;
+	cursor: pointer;
+}
+#lastPageBtn{
+	margin-left:10px;
+	cursor: pointer;
+}
+#limitSelect{
+	width:55px;
+	height:20px;
+	margin-left:20px;
+	position:relative;
+	top:1px;
+	top:0px\9\0;
+}
+#currentScope{
+	float:right;
+	margin-right:8px;
+}
+#totalScope{
+	float:right;
+	margin-right:18px;
+}

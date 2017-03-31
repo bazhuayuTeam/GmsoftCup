@@ -1,0 +1,51 @@
+@CHARSET "UTF-8";
+
+ .card{
+	    width:100%;
+	    margin-bottom:20px;	     
+}
+.head{
+		height:40px;		   
+		background:#49a2f6;
+		color:#fff;  		
+		 position:relative;		     		
+}
+.headline{
+	font-size:15px;
+	line-height:40px;
+	margin-left:20px;
+}
+ .dataStyle{
+ 		text-align:center;
+ }
+ .operate{
+ 	 position:absolute;
+ 	 right: 10px;
+     top: 20px;
+ }
+ .certification{
+ 	cursor:pointer;
+ 	float:right;
+ 	margin-right:10px;
+ 	color:#fff;
+   font-size:13px;		        
+ 	font-family:'宋体';
+ }
+ .certification img{
+ 		vertical-align:middle;
+ 		margin-right:3px;
+ }
+ 
+ .noData{
+  text-align:center;
+ }
+ .noDataImg{
+    margin:0 auto;
+    display:block;
+    padding-top:5%;
+ }		     
+ .toggle{
+ 	position:absolute;
+ 	left:49%;
+ 	cursor:pointer;
+ } 
