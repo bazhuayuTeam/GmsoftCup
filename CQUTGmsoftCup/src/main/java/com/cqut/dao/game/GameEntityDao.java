@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import com.cqut.dao.BaseDao;
-import com.cqut.entity.game.*;
+import com.cqut.entity.game.Game;
 
 import com.cqut.dao.game.customInterface.IGameEntityDao;
 

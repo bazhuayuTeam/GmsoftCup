@@ -28,7 +28,10 @@ public class Expert extends AbstractEntity {
 			"education",
 			"name",
 			"operatorID",
-			"birth"
+			"birth",
+			"addId",
+			"addTime",
+			"judgesState"
 	};
 	private static final Class<?>[] PROPERTICE_TYPE = new Class[] {
 			String.class, 
@@ -36,6 +39,9 @@ public class Expert extends AbstractEntity {
 			String.class, 
 			String.class, 
 			String.class, 
+			String.class, 
+			String.class, 
+			String.class,
 			String.class, 
 			String.class, 
 			String.class 
@@ -152,6 +158,35 @@ public class Expert extends AbstractEntity {
 		getProperties().put(PROPERTICE_NAME[7], birth);
 	}
 	
+	@Column
+	public String getAddId() {
+		Object obj = getProperties().get(PROPERTICE_NAME[8]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setAddId(String addId) {
+		getProperties().put(PROPERTICE_NAME[8], addId);
+	}
+	
+	@Column
+	public String getAddTime() {
+		Object obj = getProperties().get(PROPERTICE_NAME[9]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setAddTime(String addTime) {
+		getProperties().put(PROPERTICE_NAME[9], addTime);
+	}
+	
+	@Column
+	public String getJudgesState() {
+		Object obj = getProperties().get(PROPERTICE_NAME[10]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setJudgesState(String judgesState) {
+		getProperties().put(PROPERTICE_NAME[10], judgesState);
+	}
 
 	@Transient
 	@Override

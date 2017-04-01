@@ -11,7 +11,7 @@ import org.directwebremoting.annotations.DataTransferObject;
 import com.cqut.entity.AbstractEntity;
 
 /**
- * 竞赛阶段详情
+ * 大赛阶段表
  * 
  * @author wsf
  * 
@@ -22,20 +22,22 @@ public class GameStep extends AbstractEntity {
 
 	private static final String[] PROPERTICE_NAME = new String[] {
 			"gameStepID",
-			"gameStep",
+			"gameStepName",
 			"startTime",
 			"endTime",
-			"limits",
-			"state",
-			"gameID",
-			"prizeID"
+			"siGetPro",
+			"type",
+			"leastNumber",
+			"maxNumber",
+			"gameId"
 	};
 	private static final Class<?>[] PROPERTICE_TYPE = new Class[] {
 			String.class, 
 			String.class, 
 			String.class, 
 			String.class, 
-			Integer.class, 
+			String.class, 
+			String.class, 
 			String.class, 
 			String.class, 
 			String.class 
@@ -54,9 +56,6 @@ public class GameStep extends AbstractEntity {
 	}
 	
 	
-	/**
-	 * ID
-	 */
 	@Id
 	public String getGameStepID() {
 		Object obj = getProperties().get(PROPERTICE_NAME[0]);
@@ -80,16 +79,16 @@ public class GameStep extends AbstractEntity {
 	}
 	
 	/**
-	 * 竞赛类别
+	 * 大赛阶段名称
 	 */
 	@Column
-	public String getGameStep() {
+	public String getGameStepName() {
 		Object obj = getProperties().get(PROPERTICE_NAME[1]);
 		    return obj != null ? obj.toString() : null;
 	}
 
-	public void setGameStep(String gameStep) {
-		getProperties().put(PROPERTICE_NAME[1], gameStep);
+	public void setGameStepName(String gameStepName) {
+		getProperties().put(PROPERTICE_NAME[1], gameStepName);
 	}
 	
 	/**
@@ -106,7 +105,7 @@ public class GameStep extends AbstractEntity {
 	}
 	
 	/**
-	 * 报名截止时间
+	 * 报名结束时间
 	 */
 	@Column
 	public String getEndTime() {
@@ -119,55 +118,68 @@ public class GameStep extends AbstractEntity {
 	}
 	
 	/**
-	 * 团队人数限制
+	 * 是否需要提交作品
 	 */
 	@Column
-	public Integer getLimits() {
+	public String getSiGetPro() {
 		Object obj = getProperties().get(PROPERTICE_NAME[4]);
-		    return obj != null ? (Integer)obj : 0;
+		    return obj != null ? obj.toString() : null;
 	}
 
-	public void setLimits(Integer limits) {
-		getProperties().put(PROPERTICE_NAME[4], limits);
+	public void setSiGetPro(String siGetPro) {
+		getProperties().put(PROPERTICE_NAME[4], siGetPro);
 	}
 	
 	/**
-	 * 状态
+	 * 参赛形式
 	 */
 	@Column
-	public String getState() {
+	public String getType() {
 		Object obj = getProperties().get(PROPERTICE_NAME[5]);
 		    return obj != null ? obj.toString() : null;
 	}
 
-	public void setState(String state) {
-		getProperties().put(PROPERTICE_NAME[5], state);
+	public void setType(String type) {
+		getProperties().put(PROPERTICE_NAME[5], type);
 	}
 	
 	/**
-	 * 比赛id
+	 * 最少人数
 	 */
 	@Column
-	public String getGameID() {
+	public String getLeastNumber() {
 		Object obj = getProperties().get(PROPERTICE_NAME[6]);
 		    return obj != null ? obj.toString() : null;
 	}
 
-	public void setGameID(String gameID) {
-		getProperties().put(PROPERTICE_NAME[6], gameID);
+	public void setLeastNumber(String leastNumber) {
+		getProperties().put(PROPERTICE_NAME[6], leastNumber);
 	}
 	
 	/**
-	 * 奖项版本
+	 * 最多人数
 	 */
 	@Column
-	public String getPrizeID() {
+	public String getMaxNumber() {
 		Object obj = getProperties().get(PROPERTICE_NAME[7]);
 		    return obj != null ? obj.toString() : null;
 	}
 
-	public void setPrizeID(String prizeID) {
-		getProperties().put(PROPERTICE_NAME[7], prizeID);
+	public void setMaxNumber(String maxNumber) {
+		getProperties().put(PROPERTICE_NAME[7], maxNumber);
+	}
+	
+	/**
+	 * 大赛id
+	 */
+	@Column
+	public String getGameId() {
+		Object obj = getProperties().get(PROPERTICE_NAME[8]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setGameId(String gameId) {
+		getProperties().put(PROPERTICE_NAME[8], gameId);
 	}
 	
 

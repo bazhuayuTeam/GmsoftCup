@@ -11,7 +11,7 @@ import org.directwebremoting.annotations.DataTransferObject;
 import com.cqut.entity.AbstractEntity;
 
 /**
- * 竞赛阶段详情
+ * 大赛流程明细表
  * 
  * @author wsf
  * 
@@ -22,25 +22,28 @@ public class GameStepDetail extends AbstractEntity {
 
 	private static final String[] PROPERTICE_NAME = new String[] {
 			"gameStepDetailID",
-			"gameStepID",
-			"type",
-			"endTime",
-			"state",
-			"startTime",
+			"processID",
+			"gameTime",
+			"standardVersionID",
 			"checkStartTime",
 			"checkEndTime",
-			"standardVersionID"
-			
+			"works",
+			"startTime",
+			"endTime",
+			"fileID",
+			"parentID"
 	};
 	private static final Class<?>[] PROPERTICE_TYPE = new Class[] {
 			String.class, 
 			String.class, 
 			String.class, 
 			String.class, 
-			Integer.class, 
-			String.class , 
-			String.class , 
-			String.class , 
+			String.class, 
+			String.class, 
+			String.class, 
+			String.class, 
+			String.class, 
+			String.class, 
 			String.class 
 	};
 
@@ -57,9 +60,6 @@ public class GameStepDetail extends AbstractEntity {
 	}
 	
 	
-	/**
-	 * ID
-	 */
 	@Id
 	public String getGameStepDetailID() {
 		Object obj = getProperties().get(PROPERTICE_NAME[0]);
@@ -83,99 +83,135 @@ public class GameStepDetail extends AbstractEntity {
 	}
 	
 	/**
-	 * 竞赛阶段id
+	 * 赛制流程
 	 */
 	@Column
-	public String getGameStepID() {
+	public String getProcessID() {
 		Object obj = getProperties().get(PROPERTICE_NAME[1]);
 		    return obj != null ? obj.toString() : null;
 	}
 
-	public void setGameStepID(String gameStepID) {
-		getProperties().put(PROPERTICE_NAME[1], gameStepID);
+	public void setProcessID(String processID) {
+		getProperties().put(PROPERTICE_NAME[1], processID);
 	}
 	
 	/**
-	 * 类型
+	 * 比赛时间
 	 */
 	@Column
-	public String getType() {
+	public String getGameTime() {
 		Object obj = getProperties().get(PROPERTICE_NAME[2]);
 		    return obj != null ? obj.toString() : null;
 	}
 
-	public void setType(String type) {
-		getProperties().put(PROPERTICE_NAME[2], type);
+	public void setGameTime(String gameTime) {
+		getProperties().put(PROPERTICE_NAME[2], gameTime);
 	}
 	
 	/**
-	 * 文档提交截止时间
+	 * 评审版本
 	 */
 	@Column
-	public String getEndTime() {
+	public String getStandardVersionID() {
 		Object obj = getProperties().get(PROPERTICE_NAME[3]);
 		    return obj != null ? obj.toString() : null;
 	}
 
-	public void setEndTime(String endTime) {
-		getProperties().put(PROPERTICE_NAME[3], endTime);
+	public void setStandardVersionID(String standardVersionID) {
+		getProperties().put(PROPERTICE_NAME[3], standardVersionID);
 	}
 	
 	/**
-	 * 是否发布
+	 * 评审开始时间
 	 */
-	@Column
-	public Integer getState() {
-		Object obj = getProperties().get(PROPERTICE_NAME[4]);
-		    return obj != null ? (Integer)obj : 0;
-	}
-
-	public void setState(Integer state) {
-		getProperties().put(PROPERTICE_NAME[4], state);
-	}
-	
-	/**
-	 * 时间
-	 */
-	@Column
-	public String getStartTime() {
-		Object obj = getProperties().get(PROPERTICE_NAME[5]);
-		    return obj != null ? obj.toString() : null;
-	}
-
-	public void setStartTime(String startTime) {
-		getProperties().put(PROPERTICE_NAME[5], startTime);
-	}
-	
 	@Column
 	public String getCheckStartTime() {
-		Object obj = getProperties().get(PROPERTICE_NAME[6]);
+		Object obj = getProperties().get(PROPERTICE_NAME[4]);
 		    return obj != null ? obj.toString() : null;
 	}
 
 	public void setCheckStartTime(String checkStartTime) {
-		getProperties().put(PROPERTICE_NAME[6], checkStartTime);
+		getProperties().put(PROPERTICE_NAME[4], checkStartTime);
 	}
 	
+	/**
+	 * 评审结束时间
+	 */
 	@Column
 	public String getCheckEndTime() {
-		Object obj = getProperties().get(PROPERTICE_NAME[7]);
+		Object obj = getProperties().get(PROPERTICE_NAME[5]);
 		    return obj != null ? obj.toString() : null;
 	}
 
 	public void setCheckEndTime(String checkEndTime) {
-		getProperties().put(PROPERTICE_NAME[7], checkEndTime);
+		getProperties().put(PROPERTICE_NAME[5], checkEndTime);
 	}
 	
+	/**
+	 * 是否需要提交作品
+	 */
 	@Column
-	public String getStandardVersionID() {
+	public String getWorks() {
+		Object obj = getProperties().get(PROPERTICE_NAME[6]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setWorks(String works) {
+		getProperties().put(PROPERTICE_NAME[6], works);
+	}
+	
+	/**
+	 * 提交作品开始时间
+	 */
+	@Column
+	public String getStartTime() {
+		Object obj = getProperties().get(PROPERTICE_NAME[7]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setStartTime(String startTime) {
+		getProperties().put(PROPERTICE_NAME[7], startTime);
+	}
+	
+	/**
+	 * 提交作品结束时间
+	 */
+	@Column
+	public String getEndTime() {
 		Object obj = getProperties().get(PROPERTICE_NAME[8]);
 		    return obj != null ? obj.toString() : null;
 	}
 
-	public void setStandardVersionID(String standardVersionID) {
-		getProperties().put(PROPERTICE_NAME[8], standardVersionID);
+	public void setEndTime(String endTime) {
+		getProperties().put(PROPERTICE_NAME[8], endTime);
 	}
+	
+	/**
+	 * 附件
+	 */
+	@Column
+	public String getFileID() {
+		Object obj = getProperties().get(PROPERTICE_NAME[9]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setFileID(String fileID) {
+		getProperties().put(PROPERTICE_NAME[9], fileID);
+	}
+	
+	/**
+	 * 所属大赛或阶段
+	 */
+	@Column
+	public String getParentID() {
+		Object obj = getProperties().get(PROPERTICE_NAME[10]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setParentID(String parentID) {
+		getProperties().put(PROPERTICE_NAME[10], parentID);
+	}
+	
 
 	@Transient
 	@Override

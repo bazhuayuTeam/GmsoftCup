@@ -21,9 +21,19 @@ import com.cqut.entity.AbstractEntity;
 public class Standardversion extends AbstractEntity {
 
 	private static final String[] PROPERTICE_NAME = new String[] {
-			"standardVersionID","standardVersionName","citeState" };
+		"standardVersionID",
+		"standardVersionName",
+		"citeState",
+		"createrId",
+		"createrTime"
+	};
 	private static final Class<?>[] PROPERTICE_TYPE = new Class[] {
-			String.class,  String.class ,String.class};
+		String.class,  
+		String.class,
+		String.class,
+		String.class,
+		String.class
+	};
 
 	public Standardversion() {
 
@@ -80,6 +90,26 @@ public class Standardversion extends AbstractEntity {
 
 	public void setCiteState(String citeState) {
 		getProperties().put(PROPERTICE_NAME[2], citeState);
+	}
+	
+	@Column
+	public String getCreaterId() {
+		Object obj = getProperties().get(PROPERTICE_NAME[3]);
+		return obj != null ? obj.toString() : null;
+	}
+
+	public void setCreaterId(String createrId) {
+		getProperties().put(PROPERTICE_NAME[3], createrId);
+	}
+	
+	@Column
+	public String getCreaterTime() {
+		Object obj = getProperties().get(PROPERTICE_NAME[4]);
+		return obj != null ? obj.toString() : null;
+	}
+
+	public void setCreaterTime(String createrTime) {
+		getProperties().put(PROPERTICE_NAME[4], createrTime);
 	}
 
 	@Transient

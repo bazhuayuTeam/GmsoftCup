@@ -8,9 +8,6 @@ import javax.annotation.Resource;
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.springframework.stereotype.Controller;
-
-import time.ChangeTime;
-
 import com.cqut.service.util.fileManage.excel.ExcelService;
 import com.cqut.dao.common.ICommonDao;
 import com.cqut.dao.game.customInterface.IGameEntityDao;
@@ -150,29 +147,5 @@ public class GameService implements IGameService {
 		return false;
 	}
 	
-	@RemoteMethod
-	public boolean deleteData(String id){
-		if(this.deleteById(id)){
-			String sqlString="delete from gameStep where gameId='"+id+"'";
-			commonDao.execute(sqlString);
-			return true;
-		}
-		return false;
-	}
-	
-	@RemoteMethod
-	public boolean saveData(Game game){
-		try{
-		game.setStartTime(ChangeTime.changeToMills(game.getStartTime())+"");
-		game.setEndTime(ChangeTime.changeToMills(game.getEndTime())+"");
-		game.setState(1);
-		if(!this.saveEntity(game)){
-			return false;
-		}
-		return true;
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
+
 }

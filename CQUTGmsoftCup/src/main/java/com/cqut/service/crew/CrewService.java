@@ -8,10 +8,6 @@ import javax.annotation.Resource;
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.springframework.stereotype.Controller;
-
-import com.cqut.service.operator.OperatorService;
-import com.cqut.service.team.TeamService;
-import com.cqut.service.user.UserService;
 import com.cqut.service.util.fileManage.excel.ExcelService;
 import com.cqut.dao.common.ICommonDao;
 import com.cqut.dao.crew.customInterface.ICrewEntityDao;
@@ -30,12 +26,6 @@ public class CrewService implements ICrewService {
 	private ICrewEntityDao entityDao;
 	@Resource(name = "commonDao")
 	private ICommonDao commonDao;
-	@Resource(name = "operatorService")
-	private OperatorService operatorService;
-	@Resource(name = "teamService")
-	private TeamService teamService;
-	@Resource(name = "userService")
-	private UserService userService;
 
 	@RemoteMethod
 	public List<Map<String, Object>> findMapByPropertiesWithLimit(String[] properties,
@@ -129,35 +119,9 @@ public class CrewService implements ICrewService {
 	public boolean save(Map<String, Object> value) {
 		return saveEntity(new Crew(value));
 	}
-	@RemoteMethod
-	public boolean saveData(Crew value,String gameId){
-		String teamId=value.getTeamId();
-		String userId=value.getUserId();
-		if(userService.findUser(userId, "0").size()!=0&&userService.findUserNew(userId, gameId, teamId).size()==0&&this.getNumber(teamId)){
-			if(!saveEntity(value)){
-				return false;
-			}
-		}
-		return true;
-	}
-	
-	@RemoteMethod
-	public boolean saveTeacher(Crew value){
-		String teamId=value.getTeamId();
-		String userId=value.getUserId();
-		if(userService.findUser(userId, "2").size()!=0&&userService.findUserTeacher(userId,teamId).size()==0){
-			if(!saveEntity(value)){
-				return false;
-			}
-		}
-		return true;
-	}
-	
+
 	@RemoteMethod
 	public boolean saveEntity(Crew value) {
-		if(null==value.getCrewID()||value.getCrewID().equals("")){
-			value.setCrewID(operatorService.getID());
-		}
 		return commonDao.merge(value) != null ? true : false;
 	}
 
@@ -175,7 +139,6 @@ public class CrewService implements ICrewService {
 		return null;
 	}
 	
-
 	@RemoteMethod
 	public boolean updateEntity(Crew data, String condition) {
 		if(mapDao.updateCrew(data.getProperties(), condition)==1){
@@ -184,21 +147,5 @@ public class CrewService implements ICrewService {
 		return false;
 	}
 	
-	@RemoteMethod
-	public List<Map<String,Object>> getCrewNew(String teamId){
-		String[] properties={"me_crewId","cr_name","cr_userId","me_teamId","me_type","cr_phone","cr_email","cr_QQ","ac_academicName"};
-		List<Map<String,Object>> data=this.findMapByPropertiesQuick(properties, "me.teamId='"+teamId+"' order by me.type asc", true);
-		return data;
-	}
-	 
-	
-	@RemoteMethod
-	public boolean getNumber(String teamId){
-		String[] properties={"crewId"};
-		int number=this.findCountByProperties(properties, "teamId='"+teamId+"' and type!='2'", false);
-		if(number==5){
-			return false;
-		}
-		return true;
-	}
+
 }
