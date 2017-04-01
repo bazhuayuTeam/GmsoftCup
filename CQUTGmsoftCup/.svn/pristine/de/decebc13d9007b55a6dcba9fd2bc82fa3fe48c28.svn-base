@@ -1,9 +1,0 @@
-url=jdbc\:mysql\://10.21.1.28\:3306/gmsoftcup?Unicode\=true&characterEncoding\=UTF-8
-driverClassName=com.mysql.jdbc.Driver
-username=root
-password=cqut
-maxActive=1000
-maxIdle=30
-maxWait=-1
-defaultAutoCommit=true
-maxActive=100

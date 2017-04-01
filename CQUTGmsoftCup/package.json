@@ -1,0 +1,64 @@
+{
+  "name": "yterp",
+  "version": "1.0.0",
+  "description": "云廷ERP管理系统",
+  "main": "gulpfile.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {
+    "angular": "^1.6.3",
+    "babel-polyfill": "^6.23.0",
+    "babel-runtime": "^6.23.0",
+    "commonjs": "0.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-latest": "^6.24.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "babel-register": "^6.24.0",
+    "browserify": "^14.1.0",
+    "browserify-handbook": "^1.8.0",
+    "browserify-incremental": "^3.1.1",
+    "commonjs": "0.0.1",
+    "event-stream": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-file-transform-cache": "^1.0.6",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.5.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
+    "gutil": "^1.6.4",
+    "systemjs": "^0.20.10",
+    "uglify-js": "^2.8.18",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.oschina.net/zh28/ytERP.git"
+  },
+  "keywords": [
+    "erp"
+  ],
+  "author": "zmk",
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-3"
+    ],
+    "plugins": ["transform-runtime"],
+    "ignore": []
+  }
+}
