@@ -23,7 +23,7 @@ var gridSetting = {
 	dwrFun : GameService.findMapByPropertiesWithLimit,
 	dwrCountFun : GameService.findCountByProperties,
 	condition : "",
-	searchCondition : "",
+	searchCondition : "type=0",
 	selectCondition : '',
 	needLink : true,
 	dwr : true,
@@ -32,29 +32,17 @@ var gridSetting = {
 	loadComplete:function(){
 		$(window).trigger('resize');
 	},
-	colNames : [ 'ID','大赛名称','年份', '报名开始时间', '报名截止时间', '状态','操作' ],
+	colNames : [ 'ID','竞赛名称', '报名开始时间', '报名截止时间','参赛形式','是否多阶段','主办单位','状态','操作' ],
 	colModel : [ {
 		//代号	
 		key : true,
-		name : 'gameId',
-		index : 'gameId',
+		name : 'hu_gameId',
+		index : 'hu_gameId',
 		hidden : true
 	}, {
 		name:'gameName',
 		index:'gameName',
 		align:'center'
-	},{
-		//代码类型
-		name : 'year',
-		index : 'year',
-		align:'center',
-		formatter:function(data){
-			var state="";
-			if(data!=""){
-				state=data+"年";
-			}
-			return state;
-		}
 	},{
 		name : 'startTime',
 		index : 'startTime',
@@ -70,19 +58,36 @@ var gridSetting = {
 		formatter:function(data){
 			return DateUtil.dateDiffMills(data);
 		}
+	},{
+		//参赛形式
+		name : 'competitionType',
+		index : 'competitionType',
+		align:'center',
+		width:80,
+		formatter:function(data){
+			var type=data==0?"团队 ":"个人";
+			return type;
+		}
+	},{
+		name : 'isMultiStage',
+		index : 'isMultiStage',
+		align:'center',
+		width:80,
+		formatter:function(data){
+			var type=data==0?"否 ":"是";
+			return type;
+		}
+	},{
+		name : 'hu_hostUnitName',
+		index : 'hu_hostUnitName',
+		align:'center'
 	}, {
 		//父亲节点
 		name : 'state',
 		index : 'state',
 		formatter:function(data){
-			var state="";
-			if(data=="0"){
-				state="停用";
-			}
-			else if(data=="1"){
-				state="启用";
-			}
-			return state;
+			var states=["暂存","待审核 ","审核通过","被退回"];
+			return states[data];
 		},
 		align:'center'
 	}, {
@@ -92,7 +97,8 @@ var gridSetting = {
 		formatter : codetableColumn_formater,
 		title : false,
 		sortable : false,
-		align:'center'
+		align:'center',
+		width:350
 	} ],
 	rowNum : 10,
 	rowList : [ 10, 20, 30 ],
@@ -133,12 +139,15 @@ function codetableColumn_formater(data, d2, d3, d4) {
 	var state=d3.state;
 	var alink = "";
 	if(state==0){  //停用
-		alink =   "<a href='javascript:void(0)' onclick=\"agree('" + d2.rowId + "');\"><span class='sheetWord'>启用</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"
+		alink =   "<a href='javascript:void(0)' onclick=\"agree('" + d2.rowId + "');\"><span class='sheetWord'>申请发布</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"
+		+"<a href='javascript:void(0)' onclick=\"agree('" + d2.rowId + "');\"><span class='sheetWord'>设置竞赛流程</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"
 			+ "<a href='javascript:void(0)' onclick=\"exit('"+ d2.rowId+ "','"+d3.gameName+"','"+d3.year+"','"+d3.startTime+"','"+d3.endTime+"');\"><span class='sheetWord'>编辑</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"	
 		+ "<a href='javascript:void(0)' onclick=\"deleteFun('"+ d2.rowId+ "');\"><span class='sheetWord'>删除</span></a>&nbsp;&nbsp;&nbsp;&nbsp;";
 	}		
 	else if(state==1){
-		alink =   "<a href='javascript:void(0)' onclick=\"agreeNot('" + d2.rowId + "');\"><span class='sheetWord'>停用</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"
+		alink =   "<a href='javascript:void(0)' onclick=\"agree('" + d2.rowId + "');\"><span class='sheetWord'>申请取消发布</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"
+		+"<a href='javascript:void(0)' onclick=\"agree('" + d2.rowId + "');\"><span class='sheetWord'>查看竞赛流程</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"
+			+ "<a href='javascript:void(0)' onclick=\"exit('"+ d2.rowId+ "','"+d3.gameName+"','"+d3.year+"','"+d3.startTime+"','"+d3.endTime+"');\"><span class='sheetWord'>详情</span></a>&nbsp;&nbsp;&nbsp;&nbsp;";	
 	}
 	return alink;
 }

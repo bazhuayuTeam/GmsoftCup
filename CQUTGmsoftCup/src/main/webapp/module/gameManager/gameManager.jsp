@@ -16,7 +16,7 @@
 	JQueryLoader loader = new JQueryLoader(
 			"jqGrid,dwr,dialogNew,tips,mask,watermark,wordStyle,commonStyle,pageBasic,searchBox,dialog,util");
 	ServiceLoader serviceLoader = new ServiceLoader(
-			"TeamService,GameService");
+			"TeamService,GameService,CodeTableService");
 %>
 <html>
 	<head>
@@ -25,7 +25,7 @@
 		<%=loader.getCssFilesStr()%>
 		<%=loader.getJsFilesStr()%>
 		<%=serviceLoader.getServiceFilesStr()%>
-		<title>竞赛管理</title>
+		<title>竞赛申请</title>
 		<script type='text/javascript' src='js/plugins/deriveExcel/deriveExcel.js'></script>
 		<style type="text/css">
 a {
@@ -39,7 +39,7 @@ a {
 	</head>
 	<body style="margin-top: 0px; padding: 0;">
 		<div class="topStyle">
-			<div class="topTitle">竞赛管理</div>
+			<div class="topTitle">竞赛申请</div>
 			<div class="operateRight">
 				<span> | </span>
 				<span><a onclick="addNew();">新增</a></span>
