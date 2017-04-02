@@ -33,42 +33,32 @@
 			var basePath = "<%=basePath%>";
 		</script>
   </head>
-  
   <body>
        <div class="topStyle">
 	      <div class="topTitle"  id="title">评审指标设置</div>
 	      <div class="operateRight">
-	            	<span>|</span>             	
-	            	<span><a onclick="addTarget();">新增指标</a></span>
-	            	<span>|</span>
+	           	<span>|</span>             	
+	           	<span><a onclick="addTarget();">新增指标</a></span>
+	           	<span>|</span>
 	      </div>             
         </div>
         <ul class="searchList" >
-						<li><span class="searchName">指标版本</span></li>
-						<li>
-							<select id='targetSysVersion'  class="searchSelect"   onchange="quickSearch();">
-							</select>
-						</li>
-						<li><span class="searchName">指标名称</span></li>
-						<li>
-							<input id='targetName'  class="searchInput"  maxlength="30"/>
-						</li>
-						<li>
-							<button id="searchButton" onclick="quickSearch();" class="searchButton">搜索	</button>
-						</li>
-						<li>
-						 	
-						</li>						
-				</ul>
+			<li><span class="searchName">指标版本</span></li>
+			<li>
+				<select id='targetSysVersion'  class="searchSelect"   onchange="quickSearch();">
+				</select>
+			</li>
+			<li><span class="searchName">指标名称</span></li>
+			<li>
+				<input id='targetName'  class="searchInput"  maxlength="30"/>
+			</li>
+			<li>
+				<button id="searchButton" onclick="quickSearch();" class="searchButton">搜索	</button>
+			</li>					
+		</ul>
         <div class="contentDiv">
 			<!-- 当前位置开始 -->
 			<div class="navigate" id="currentPosition"></div>
-			<!-- 当前位置结束 -->
-			<!-- <div class="showTargetBtn">
-						 		<span>|</span>      
-								<a href="javascript:void(0)" onclick="showTarget();">预览</a>
-								<span>|</span>      
-			</div> -->
 			<div id="MainArea" style="width: 96.8%;">
 				<table id="targetTable" border="0" width="100%"></table>
 				<div id="targetPager"></div>

@@ -14,6 +14,7 @@ import com.cqut.dao.gameStepDetail.customInterface.IGameStepDetailEntityDao;
 import com.cqut.dao.gameStepDetail.customInterface.IGameStepDetailMapDao;
 import com.cqut.entity.gameStepDetail.GameStepDetail;
 
+import com.cqut.service.codeTable.CodeTableService;
 import com.cqut.service.gameStepDetail.customInterface.IGameStepDetailService;
 
 @Controller  
@@ -26,6 +27,8 @@ public class GameStepDetailService implements IGameStepDetailService {
 	private IGameStepDetailEntityDao entityDao;
 	@Resource(name = "commonDao")
 	private ICommonDao commonDao;
+	@Resource(name = "codeTableService")
+	private CodeTableService codeTableService;
 
 	@RemoteMethod
 	public List<Map<String, Object>> findMapByPropertiesWithLimit(String[] properties,
@@ -72,6 +75,20 @@ public class GameStepDetailService implements IGameStepDetailService {
 		int length = mapDao.findCount(properties, condition, needLink);
 		return length;
 	}
+	
+	@RemoteMethod
+	public List<Map<String, Object>> findPropertiesWithLimit(String[] properties,
+			String condition, String sortField, String order, boolean needLink, int curPage, int limit) {
+		List<Map<String, Object>> data = mapDao.findGameStepDetails(properties, condition, sortField, order, needLink, ((curPage-1)*limit), limit);
+		
+		for(int i=0;i<data.size();i++){
+			Map<String, Object> map = codeTableService.getCodeTable(new String[]{"codeTableName"}, "codeTableCode='"+data.get(i).get("me_type")+"'", false);
+			data.get(i).put("type", map.get("codeTableName"));
+		}
+		
+		return data;
+	}
+
 	
 	public List<GameStepDetail> findGameStepDetailByProperties(String[] properties,
 			String condition, boolean needLink, int index, int limit) {

@@ -24,7 +24,7 @@ var gridSetting = {
 	searchCondition : '',
 	selectCondition : '',
 	needLink : true,
-	colNames : ["竞赛id","竞赛名称","年份","竞赛阶段id","竞赛类别","竞赛详情id","竞赛任务"],
+	colNames : ["竞赛id","竞赛名称","年份","竞赛阶段id","竞赛阶段","竞赛详情id","赛制流程"],
 	colModel : [{
 		name : 'ga_gameID',
 		index : 'ga_gameID',
@@ -36,7 +36,8 @@ var gridSetting = {
 	},{
 		name : "ga_year",
 		index : "ga_year",
-		align : 'center'
+		align : 'center',
+		hidden:true
 	},{
 		name : "gs_gameStepID",
 		index : "gs_gameStepID",

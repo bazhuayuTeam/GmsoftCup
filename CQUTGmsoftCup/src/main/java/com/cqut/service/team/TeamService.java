@@ -334,7 +334,7 @@ public class TeamService implements ITeamService {
 		crew.setCrewID(operatorService.getID());
 		crew.setTeamId(id);
 		crew.setType("0");
-		crew.setUserId(value.get("captianId").toString());
+		//crew.setUserId(value.get("captianId").toString());
 		crewService.saveEntity(crew);
 		return true;
 		}
