@@ -1,5 +1,6 @@
 package com.cqut.service.targetSystem;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -147,11 +148,13 @@ public class TargetSystemService implements ITargetSystemService {
 
 	@RemoteMethod
 	public boolean saveStandard(String standardVersionName,
-			String standardVersionB) {
+			String standardVersionB,String createrId) {
 		if ("".equals(standardVersionB) || standardVersionB == null) {
 			Standardversion s = new Standardversion();
 			s.setStandardVersionName(standardVersionName);
 			s.setCiteState("0");
+			s.setCreaterId(createrId);
+			s.setCreaterTime((new Date().getTime())+"");
 			return saveEntity(s);
 		} else {
 			Standardversion s = new Standardversion();
@@ -221,5 +224,12 @@ public class TargetSystemService implements ITargetSystemService {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public boolean saveStandard(String standardVersionId,
+			String standardVersionB) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

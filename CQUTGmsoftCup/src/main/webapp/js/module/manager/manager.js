@@ -22,7 +22,7 @@ function addEvent() {
 }
 
 function initManagerPageData() {
-	managerPageData.firstLevelBgColor = "#c3a080";
+	managerPageData.firstLevelBgColor = "#466785";
 	managerPageData.secondLevelBgColor = "#d4b598";
 	managerPageData.menuItemClassName = "menuItemDiv";
 	managerPageData.secondLevelMenuItemClassName = "secondLevelMenuItemDiv";

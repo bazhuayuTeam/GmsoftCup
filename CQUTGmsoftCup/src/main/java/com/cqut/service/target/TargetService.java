@@ -369,6 +369,11 @@ public class TargetService implements ITargetService {
 				targetCode = prefix + add0(suffixCode, codeLen);
 			}
 		}
+		else{  
+			if (!(parentCode == null || parentCode == "")) {
+				targetCode=parentCode + targetCode;
+			}
+		}
 		
 		return targetCode;
 	}

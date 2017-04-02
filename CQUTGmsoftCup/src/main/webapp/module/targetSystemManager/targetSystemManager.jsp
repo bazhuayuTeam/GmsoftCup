@@ -20,7 +20,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<base href="<%=basePath%>"/>
-		<title>指标体系设置</title>
+		<title>指标标准设置</title>
 		<%=loader.getCssFilesStr()%>
 		<%=loader.getJsFilesStr()%>
 		<%=sl.getServiceFilesStr()%>
@@ -32,25 +32,24 @@
   
   <body>
        <div class="topStyle">       
-       		<div  class="topTitle" id="title">评审标准管理</div>
-             <div class="operateRight">
+       		<div class="topTitle" id="title">评审标准管理</div>
+            <div class="operateRight">
              	<span>|</span>             	
              	<span><a onclick="addTargetSys();" id="add">新增版本</a></span>
              	<span>|</span>
             </div>
         </div>
         <ul class="searchList" >
-						<li><span class="searchName">版本名称</span></li>
-						<li>
-							<input id='targetSystem'  class="searchInput"   onchange="quickSearch();"/>
-						</li>
-						<li>
-							<button onclick="quickSearch();" class="searchButton" id="searchButton">搜索</button>
-						</li>
+			<li><span class="searchName">版本名称</span></li>
+			<li>
+				<input id='targetSystem'  class="searchInput"   onchange="quickSearch();"/>
+			</li>
+			<li>
+				<button onclick="quickSearch();" class="searchButton" id="searchButton">搜索</button>
+			</li>
 		</ul>
         
         <div class="contentDiv" >
-        
 			<div id="MainArea" style="width: 96.8%;">
 				<!-- 体系表格 -->
 				<div id="targetSystemDiv">

@@ -61,14 +61,14 @@ var gridSetting={
 		name:"me_isLastTarget",
 		index:"me_isLastTarget",
 		formatter:function(val){
-							var type="";
-							if(val != null){
-								switch(val){
-										case 0:type="是";break;
-										case 1:type="否";break;
-								}
-							}
-							return type;
+			var type="";
+			if(val != null){
+				switch(val){
+						case 0:type="是";break;
+						case 1:type="否";break;
+				}
+			}
+			return type;
 		},
 		width:30,
 		align:"center",
@@ -180,7 +180,6 @@ function initGrid(){
 	    $("#targetTable").setGridWidth($("#targetPager").width()-2); 
 	}).trigger('resize');
 	//$("#targetTable").closest(".ui-jqgrid-bdiv").css({ 'overflow-x' : 'scroll' });
-	
 }  
 
 
@@ -230,7 +229,6 @@ function addTarget(){
 // 获得基本条件
 function getBaseContion(){
 	var condition=" 1=1";
-	//condition += (pageData.curParentCode== null)?"is null":"= '" +pageData.curParentCode+"'";
 	if(pageData.curParentCode== null){
 		condition+=" AND (me.targetParentCode  is null or me.targetParentCode='')";
 	}
@@ -364,10 +362,10 @@ function delePosition(curPos,targetName){
 // 编辑
 function editFun(id){
 	DialogUtil.openFloatWindow("module/targetManager/targetAdd.jsp",{targetCode:id,isModify:"true"},
-		                                               {EVENT_OK:function(param){												
-													 			sendData(param,"修改");
-		                                                  }
-                                                   	});
+   {EVENT_OK:function(param){												
+ 			sendData(param,"修改");
+          }
+   	});
 }
 
 // 将新增和编辑后的数据发送到后台
@@ -378,7 +376,7 @@ function sendData(param,opName){
         param.standardVersionID=targetSysVersionID;
         param.targetParentCode=pageData.curParentCode;
 	  	TargetService.saveTarget(param,
-		 		function(data) {
+		 	function(data) {
   				if(data){
   					mWin.ok(opName + "成功!");
   					refresh(getBaseContion());
@@ -397,24 +395,21 @@ function enterSubLevel(parentCode,targetName,targetScore){
 	refresh(getBaseContion());
 }
 
-
 // 删除指标及下级指标
 function deleteFun(targetCode){
 	jConfirm('您确定要删除吗？这将删除该指标及所有下级指标',function() {
 		TargetService.deleteTargetAndLowerTargets(targetCode,
-				function(data){
-					if(data){
-						mWin.ok("删除成功");
-						refresh(getBaseContion());
-					}else
-						jAlert("删除失败");
-			});
+		function(data){
+			if(data){
+				mWin.ok("删除成功");
+				refresh(getBaseContion());
+			}else
+				jAlert("删除失败");
+		});
 	});
-		
 }
 
 // 预览指标
 function showTarget(){
-	DialogUtil.openModalWindow(basePath + "/module/indexSystemQuery/indexSystemQuery.jsp",{targetSysVersionID:$("#targetSysVersion").val()},
-		                                               {   },1200,700);		    
+	DialogUtil.openModalWindow(basePath + "/module/indexSystemQuery/indexSystemQuery.jsp",{targetSysVersionID:$("#targetSysVersion").val()},	                                               {   },1200,700);		    
 }

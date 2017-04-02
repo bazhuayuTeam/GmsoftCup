@@ -22,11 +22,11 @@ $(document).ready(function() {
 	$("#add").removeAttr('onclick');
 	$("#add").click(function() {
 		// 版本
-		if (currentIDAndName.targetSysID && currentIDAndName.targetSysName) {
-			addTargetSysVersion();
-		} else {// 体系
-			addTargetSys();
-		}
+	if (currentIDAndName.targetSysID && currentIDAndName.targetSysName) {
+		addTargetSysVersion();
+	} else {// 体系
+		addTargetSys();
+	}
 	});
 	modifyToNiceScroll("body");
 });
@@ -104,44 +104,44 @@ var gridSystemSetting = {
 // 新增指标体系
 function addTargetSys() {
 	DialogUtil.openFloatWindow(
-			"module/targetSystemManager/targetSystemAdd.jsp", {}, {
-				EVENT_OK : function(param) {
-					dwr.engine.setAsync(false);
-					TargetSystemService.saveStandard(param.standardVersionName,
-							param.standardVersionB, function(data) {
-								if (data) {
-									mWin.ok("新增成功");
-									quickSearch();
-								} else {
-									jAlert("新增失败");
-								}
-							});
-					dwr.engine.setAsync(true);
+		"module/targetSystemManager/targetSystemAdd.jsp", {}, {
+		EVENT_OK : function(param) {
+			dwr.engine.setAsync(false);
+			TargetSystemService.saveStandard(param.standardVersionName,
+				param.standardVersionB,pageData.operatorID, function(data) {
+				if (data) {
+					mWin.ok("新增成功");
+					quickSearch();
+				} else {
+					jAlert("新增失败");
 				}
 			});
+			dwr.engine.setAsync(true);
+		}
+	});
 }
 
 function editTargetSys(targetSystemID, name) {
 	DialogUtil.openFloatWindow(
-			"module/targetSystemManager/targetSystemEdit.jsp", {
-				id : targetSystemID,
-				name : name
-			}, {
-				EVENT_OK : function(param) {
-					dwr.engine.setAsync(false);
-					TargetSystemService.updateStandard(
-							param.standardVersionName, param.standarVsersionId,
-							function(data) {
-								if (data) {
-									mWin.ok("修改成功");
-									quickSearch();
-								} else {
-									jAlert("修改失败");
-								}
-							});
-					dwr.engine.setAsync(true);
-				}
-			});
+		"module/targetSystemManager/targetSystemEdit.jsp", {
+		id : targetSystemID,
+		name : name
+	}, {
+		EVENT_OK : function(param) {
+			dwr.engine.setAsync(false);
+			TargetSystemService.updateStandard(
+					param.standardVersionName, param.standarVsersionId,
+					function(data) {
+						if (data) {
+							mWin.ok("修改成功");
+							quickSearch();
+						} else {
+							jAlert("修改失败");
+						}
+					});
+			dwr.engine.setAsync(true);
+		}
+	});
 }
 
 function infoGame(targetSystemID, name) {
@@ -168,7 +168,7 @@ function deleteTargetSys(targetSystemID) {
 
 // 快速查找
 function quickSearch() {
-	var condition = " 1=1 ";
+	var condition = "createrId='"+pageData.operatorID+"'";
 	pageData.standardVersionName = $("#targetSystem").val();
 	if (pageData.standardVersionName != "") {
 		condition += " and standardVersionName like '%" + pageData.standardVersionName + "%'";
@@ -228,6 +228,7 @@ function refresh(condition, tableID) {
 function operatorFormatter(data, d2, d3, d4) {
 	var alink = "";
 	if(d3.citeState == "0"){
+		//alink += "<a style='cursor:pointer;' onclick=\"setTargetSys('" + d2.rowId + "');\">" + "<span class='operatorColumn sheetWord'>设置评审指标</span></a>&nbsp;&nbsp;";
 		alink += "<a style='cursor:pointer;' onclick=\"editTargetSys('" + d2.rowId+ "','" + d3.standardVersionName+ "');\">" + "<span class='operatorColumn sheetWord'>编辑</span></a>&nbsp;&nbsp;"; 
 		alink += "<a style='cursor:pointer;' onclick=\"deleteTargetSys('" + d2.rowId + "');\"><span class='operatorColumn sheetWord'>删除</span></a>&nbsp;&nbsp;";	
 	}
@@ -241,4 +242,8 @@ function showTarget(id,standardVersionName) {
 		targetSysVersionID : id,
 		standardVersionName : standardVersionName
 	}, {}, 1200, 700);
+}
+
+function setTargetSys(id){
+	
 }
