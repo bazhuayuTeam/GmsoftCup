@@ -63,7 +63,7 @@ ServiceLoader sl = new ServiceLoader("OperatorService,RoleService,RoleAssignServ
   
   <body>
      <div class="topStyle">
-	      <div class="topTitle"  id="title">角色分配</div>
+	      <div class="topTitle" id="title">角色分配</div>
      </div>
      <div class="contentDiv">
 		 <div class="selectDiv">

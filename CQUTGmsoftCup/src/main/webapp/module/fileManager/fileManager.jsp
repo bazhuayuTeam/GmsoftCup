@@ -42,16 +42,16 @@ a {
 			
 		</div>
 		<ul class="searchList" style="position: fixed;top:67px;">
-			<li><span class="searchName">大赛名称：</span></li>
+			<li><span class="searchName">竞赛名称：</span></li>
 			<li>
 				<select id="game" class="searchInput" onchange="quickSearch();"></select>
 			</li>
-			<li><span class="searchName">竞赛类别：</span></li>
+			<li><span class="searchName">竞赛阶段：</span></li>
 			<li>
 				<select id="gameStep" class="searchSelect">
 				</select>
 			</li>
-			<li><span class="searchName">竞赛任务：</span></li>
+			<li><span class="searchName">赛制流程：</span></li>
 			<li>
 				<select id="type" class="searchSelect">
 				<!-- <option value="0">初赛</option>
@@ -74,6 +74,7 @@ a {
 				<div id="codeTablePager"></div>
 			</div>
 		</div>
+		<script type="text/javascript" >var operatorId="${operatorId}";</script>
 		<script type="text/javascript" src="js/module/fileManager/fileManager.js">
 </script>
 	</body>

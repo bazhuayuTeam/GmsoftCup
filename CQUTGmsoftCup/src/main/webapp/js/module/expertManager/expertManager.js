@@ -193,7 +193,7 @@ function getSelectedRowIDs() {
 
 function quickSearch(){
 	var name = $("#nameSearch").val();
-	var con="true =true";
+	var con="addId ='"+operatorId+"'";
 	if(name != "请输入姓名"){
 		con += " and name like '%"+name+"%'";
 	}

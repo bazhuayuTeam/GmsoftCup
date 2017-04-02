@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+	<relation>
+		<source>
+			processResultDetail.processResultDetailID
+		</source>
+		<target classAlias="me"  linkType="0">
+			processResultDetail.processResultDetailID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			processResultDetail.signUpId
+		</source>
+		<target classAlias="te"  linkType="0">
+			team.teamId
+		</target>
+	</relation>
+	<relation>
+		<source>
+			processResultDetail.gameStepDetailID
+		</source>
+		<target classAlias="ga"  linkType="0">
+			gameStepDetail.gameStepDetailID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			processResultDetail.fileId
+		</source>
+		<target classAlias="st"  linkType="0">
+			systemFile.ID
+		</target>
+	</relation>
+</setting>

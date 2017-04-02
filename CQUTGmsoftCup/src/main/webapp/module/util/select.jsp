@@ -145,16 +145,19 @@ JQueryLoader loader=new JQueryLoader("jquery-plugin,jqGrid,dwr,dialog,singlesele
 				modal: true,
 				winMode:ChildDialogUtil.getWinMode(),
 				close: function(event) {
+				alert("2222")
 					if(!event.data){
 						DialogUtil.getTopWindow().WindowManager.hiddenFlowWindow();
 						return;
 					}
 					if(event.data.type == DialogUtil.EVENT_OK){
+						alert("11111")
 							if(!_isMuti){
 								var returnID=getSelectedRowID();
 								var returnRowData=getRow(returnID);
 								if(returnID && returnRowData){
 									returnRowData=$.extend(returnRowData,{IDs:returnID});
+									alert(returnRowData)
 									ChildDialogUtil.doClose(event.data.type,returnRowData);
 								}
 							}else{

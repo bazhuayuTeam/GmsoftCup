@@ -25,7 +25,7 @@
 		<%=loader.getCssFilesStr()%>
 		<%=loader.getJsFilesStr()%>
 		<%=serviceLoader.getServiceFilesStr()%>
-		<title>指定评委</title>
+		<title>评委指定</title>
 		<script type='text/javascript' src='js/plugins/deriveExcel/deriveExcel.js'></script>
 		<style type="text/css">
 a {
@@ -39,7 +39,7 @@ a {
 	</head>
 	<body style="margin-top: 0px; padding: 0;">
 		<div class="topStyle">
-			<div class="topTitle">指定评委</div>
+			<div class="topTitle">评委指定</div>
 			<div class="operateRight">
 				<span> | </span>
 				<span><a onclick="arrangeExpert(0);">指定评委</a></span>
@@ -47,17 +47,17 @@ a {
 			</div>
 		</div>
 		<ul class="searchList" style="position: fixed;top:67px;">
-			<li><span class="searchName">大赛名称：</span></li>
+			<li><span class="searchName">竞赛名称：</span></li>
 			<li>
 				<select id="game" class="searchSelect" onchange="initStep();">
 				</select>
 			</li>
-			<li><span class="searchName">竞赛类别：</span></li>
+			<li><span class="searchName">竞赛阶段：</span></li>
 			<li>
 				<select id="gameStep" class="searchSelect" onchange="initTask();">
 				</select>
 			</li>
-			<li><span class="searchName">竞赛任务：</span></li>
+			<li><span class="searchName">赛制流程：</span></li>
 			<li>
 				<select id="task" class="searchSelect" onchange="quickSearch();">
 				</select>

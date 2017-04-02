@@ -9,7 +9,7 @@
 			+ path + "/";
 	JQueryLoader loader = new JQueryLoader(
 			"jqGrid,dwr,tips,dialog,watermark,mask,noData,selfTable,nicescroll,dropDownBox,searchBox,wordStyle,commonStyle,pageBasic");
-	ServiceLoader serviceLoader=new ServiceLoader("CodeTableService,GameService,TeamService");
+	ServiceLoader serviceLoader=new ServiceLoader("CodeTableService,GameService,TeamService,GameStepService");
 	String operatorId = (String) request.getSession().getAttribute(
 			"operatorId");
 	String expertID = (String) request.getSession().getAttribute(
@@ -36,7 +36,7 @@
 
 	<body>
 	    <div class="topStyle">
-        	<div class="topTitle" id="title">评委评审</div>
+        	<div class="topTitle" id="title">评委评审ccc</div>
         </div>
         <ul class="searchList" id="listOperation">
         	<li><span class="searchName">竞赛名称</span></li>
@@ -44,12 +44,12 @@
 				<select id="name" class="searchSelect" onchange="quickSearch()">
 				</select>
 			</li>
-			<li><span class="searchName">竞赛类别</span></li>
+			<li><span class="searchName">竞赛阶段</span></li>
 			<li>
 				<select id="clazz" class="searchSelect" onchange="quickSearch()">
 				</select>
 			</li>
-			<li><span class="searchName">竞赛任务</span></li>
+			<li><span class="searchName">赛制流程</span></li>
 			<li>
 				<select id="task" class="searchSelect" onchange="quickSearch()">
 				</select>

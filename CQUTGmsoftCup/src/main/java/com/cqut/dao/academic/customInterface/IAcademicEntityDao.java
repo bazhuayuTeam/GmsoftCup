@@ -1,4 +1,4 @@
-package com.cqut.dao.academic.customInterface;
+package main.java.com.cqut.dao.academic.customInterface;
 
 import java.util.List;
 

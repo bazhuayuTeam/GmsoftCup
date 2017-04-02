@@ -240,6 +240,7 @@ function refresh(result){
 	 
 	 getRoleId();	
 	 pageData.condition="me.operatorID='"+pageData.operatorID+"'";
+	 
 	 currentState();	
  	 jQuery("#selectedTable").setGridParam({
  	   			selectCondition :pageData.condition
