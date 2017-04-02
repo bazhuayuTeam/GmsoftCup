@@ -1,0 +1,81 @@
+.teamLimit{
+	margin-top:5px;
+}
+
+.teamLimit input{
+	width:50px;
+}
+
+.panel-container{
+    width:300px;
+    height:300px;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    background-color: #ffffff;
+    border: 1px solid #348be7;
+    border-radius: 5px;
+}
+
+.panel-title{
+	height: 40px;
+    line-height: 40px;
+    background-color: #348be7;	
+}
+
+.panel-title h3{
+	padding-left: 10px;
+    color: #ffffff;
+}
+
+.panel-content{
+	height: 223px;
+    overflow: auto;
+}
+
+.panel-content ul{
+    list-style: none;
+    padding:0;
+    margin-top: 10px;
+}
+
+.panel-content ul li{
+    margin-bottom:10px;
+}
+
+.remove-item{
+	width: 14px;
+	height:14px;
+    background-color: #ffffff;
+    color: red;
+    font-size:14px!important;
+    font-weight:bold;
+}
+
+.addNew{
+	display: block;
+    width: 90px;
+    margin: 20px auto;
+    background-color: red;
+}
+
+.panel-footer{
+	height: 38px;
+    background-color: #348be7;
+}
+
+.panel-cancel{
+	background-color:#f0f0f0;
+	color:#000000;
+}
+
+.panel-confirm{
+    margin: 4px 0 0 143px;
+}
+
+.hidden{
+    visibility: hidden;
+}
