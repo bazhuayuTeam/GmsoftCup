@@ -26,7 +26,8 @@ public class HostUnit extends AbstractEntity {
 			"hostUnitContactPerson",
 			"hostUnitContactMail",
 			"type",
-			"gameId"
+			"gameId",
+			"hostUnitName"
 	};
 	private static final Class<?>[] PROPERTICE_TYPE = new Class[] {
 			String.class, 
@@ -34,7 +35,8 @@ public class HostUnit extends AbstractEntity {
 			String.class, 
 			String.class, 
 			String.class, 
-			String.class 
+			String.class,
+			String.class
 	};
 
 	public HostUnit(){
@@ -135,6 +137,16 @@ public class HostUnit extends AbstractEntity {
 
 	public void setGameId(String gameId) {
 		getProperties().put(PROPERTICE_NAME[5], gameId);
+	}
+	
+	@Column
+	public String getHostUnitName() {
+		Object obj = getProperties().get(PROPERTICE_NAME[6]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setHostUnitName(String hostUnitName) {
+		getProperties().put(PROPERTICE_NAME[6], hostUnitName);
 	}
 	
 

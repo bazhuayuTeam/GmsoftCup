@@ -162,10 +162,11 @@ function initState(){
 
 function initStep(){
 	var html="";
+	var gameid=$("game").val();
 	dwr.engine.setAsync(false);
-	GameStepService.findMapByPropertiesQuick(["gameStep","mo_codeTableName"],"true=true",true,function(data){
+	GameStepService.findMapByPropertiesQuick(["gameStepName"],"gameid='"+gameid+"'",false,function(data){
 		for(var i=0;i<data.length;i++){
-			html+="<option value='"+data[i]["gameStep"]+"'>"+data[i]["mo_codeTableName"]+"</option>"
+			html+="<option value='"+data[i]["gameStepName"]+"'>"+data[i]["gameStepName"]+"</option>"
 		}
 	})
 	dwr.engine.setAsync(true);
