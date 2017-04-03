@@ -81,7 +81,9 @@
 		userSetting.waitingDiv = waitingZone;
 		
 		$(this).append(fileDiv).bind('delete',function(data,id){});//绑定删除事件
-		$(this).bind('afterFun',function(){});//绑定上传事件，上场完成后会调用该方法
+		$(this).bind('afterFun',function(){
+			setting.uploadComplete&&setting.uploadComplete();
+		});//绑定上传事件，上场完成后会调用该方法
 		if(uploadFlag){
 			fileInput.MultiFile({
 				STRING: {
@@ -90,11 +92,11 @@
 				}
 			},userSetting);
 		}
-		return new ulPlugin();
+		return new ulPlugin(setting);
 	}
 	
 	//客户端操作
-	function ulPlugin(){
+	function ulPlugin(setting){
 		return {
 			checkStatus: function(){
 				//是否可以上传
@@ -187,7 +189,8 @@
 			//传入SystemFile对象数组，显示到列表中
 			loadFiles:addFileShowInPage,
 			emptyFiles:deleteAll,//删除文件
-			emptyInfor:emptyInfor//只删除显示部分
+			emptyInfor:emptyInfor,//只删除显示部分
+			emptyFile:deleteFile
 		};
 		
 	}
@@ -217,29 +220,32 @@
 			var id=new Date().getTime();
 		
 			SystemFileService.uploadFiles(selectedFiles, selectedFilesPath,function(data) {
-				if(data!=null){
-					$('.u-file-btnzone').unmask();
-					
-					//用于判断已经上传过的文件
-					if($('.u-file-waiting').data('history')== undefined){
-						$('.u-file-waiting').data('history',[]);
+				try{
+					if(data!=null){
+						$('.u-file-btnzone').unmask();
+						
+						//用于判断已经上传过的文件
+						if($('.u-file-waiting').data('history')== undefined){
+							$('.u-file-waiting').data('history',[]);
+						}
+						var temp = $('.u-file-waiting').data('history');
+						for(var j=0;j<selectedFiles.length;j++){
+							temp.push(selectedFiles[j].value);
+						}
+					    addFileShowInPage(data);
+						ulButton.click(upload);
+						operateFlag = true;
+						$(".MultiFile-wrap").children(":file[id^='upload_file'][value!='']").each(
+							function(i, cur) {
+								$(cur).remove();
+						});
+						$('a .MultiFile-remove').click();
+						$.fn.MultiFile.reEnableEmpty();
+					}else{
+						jAlert('上传失败!');
 					}
-					var temp = $('.u-file-waiting').data('history');
-					for(var j=0;j<selectedFiles.length;j++){
-						temp.push(selectedFiles[j].value);
-					}
-					
-					addFileShowInPage(data);
-					ulButton.click(upload);
-					operateFlag = true;
-					$(".MultiFile-wrap").children(":file[id^='upload_file'][value!='']").each(
-						function(i, cur) {
-							$(cur).remove();
-					});
-					$('a .MultiFile-remove').click();
-					$.fn.MultiFile.reEnableEmpty();
-				}else{
-					jAlert('上传失败!');
+				}catch(e){
+					console.log(e);
 				}
 			});
 		}
@@ -315,7 +321,7 @@
 	
 	//在页面里显示文件
 	function addFileShowInPage(data, readOnly){
-		
+		console.log(data);
 		if($('.u-file-waiting').data('history')== undefined){
 			$('.u-file-waiting').data('history',[]);
 		}

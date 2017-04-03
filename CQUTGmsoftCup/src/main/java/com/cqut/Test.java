@@ -5,5 +5,4 @@ public class Test {
 		String aaString="000100010001";
 		System.out.println(aaString.indexOf("00010001"));
 	}
-
 }

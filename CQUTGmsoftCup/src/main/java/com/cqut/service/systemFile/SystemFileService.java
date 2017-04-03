@@ -19,6 +19,8 @@ import org.directwebremoting.annotations.RemoteProxy;
 import org.directwebremoting.io.FileTransfer;
 import org.springframework.stereotype.Controller;
 
+import util.StringUtil;
+
 import com.cqut.dao.common.ICommonDao;
 import com.cqut.dao.systemFile.customInterface.ISystemFileEntityDao;
 import com.cqut.dao.systemFile.customInterface.ISystemFileMapDao;
@@ -63,7 +65,7 @@ public class SystemFileService implements ISystemFileService {
 	}
 	
 	public SystemFile createFile(InputStream inputStream, String fileName, String creator, String fileType, Long fileSize){
-		String filePath = FileUtil.saveFile(inputStream);
+		String filePath = FileUtil.saveFile(inputStream,fileName);
 		if(filePath == null){
 			return null;
 		}
@@ -85,7 +87,7 @@ public class SystemFileService implements ISystemFileService {
 		String filePath = null;
 		try {
 			fileTransfer.getMimeType();
-			filePath = FileUtil.saveFile(fileTransfer.getInputStream()/*, StringUtil.subStringByLastFlag(fileTransfer.getFilename(), ".")*/);
+			filePath = FileUtil.saveFile(fileTransfer.getInputStream(),fileTransfer.getFilename());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -351,14 +353,14 @@ public class SystemFileService implements ISystemFileService {
 		String filePath = null;
 		boolean flag = false;
 		try {
-			filePath = FileUtil.saveFile(fileTransfer.getInputStream()/*, StringUtil.subStringByLastFlag(fileTransfer.getFilename(), ".")*/);
+			filePath = FileUtil.saveFile(fileTransfer.getInputStream(), fileTransfer.getFilename());
 		} catch (IOException e) {
 			e.printStackTrace();
 			flag = true;
 		}
 		if(flag){
 			try {
-				filePath = FileUtil.saveFile(fileTransfer.getInputStream());
+				filePath = FileUtil.saveFile(fileTransfer.getInputStream(),fileTransfer.getFilename());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -372,7 +374,6 @@ public class SystemFileService implements ISystemFileService {
 		//file.setCreator(createrId);
 		file.setFileSize(fileTransfer.getSize());
 		file.setFileType(fileTransfer.getMimeType());
-		file.setNewTime(Calendar.getInstance().getTime());
 		file.setSavePath(filePath);
 		file = (SystemFile)commonDao.merge(file);
 		return file != null ? file : null;

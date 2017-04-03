@@ -53,14 +53,16 @@ public class FileUtil {
 	 * @param inputStream 文件流
 	 * @return 返回文件绝对路径
 	 */
-	public static String saveFile(InputStream inputStream){
+	public static String saveFile(InputStream inputStream,String fileName){
 		String fileId = BeanUtil.createId();
-		String path = basePath + fileId.substring(0, 4) + "/" + fileId.substring(4, 6) + "/"+ fileId.substring(6, 8);
+		String base=FileUtil.class.getResource("/").getPath().replace("WEB-INF/classes/","")+basePath;
+		String path = base + fileId.substring(0, 4) + "/" + fileId.substring(4, 6) + "/"+ fileId.substring(6, 8);
+	    String truePath=basePath+fileId.substring(0, 4) + "/" + fileId.substring(4, 6) + "/"+ fileId.substring(6, 8);
 		File file = new File(path);
 		if(!file.exists()){
 			file.mkdirs();
 		}
-		file = new File(path + "/" + fileId);
+		file = new File(path + "/" + fileName);
 		
 		FileOutputStream fos = null;
 		try{
@@ -73,7 +75,7 @@ public class FileUtil {
 			fos.flush();
 			fos.close();
 			inputStream.close();
-			return path + "/" + fileId;
+			return truePath + "/" + fileName;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

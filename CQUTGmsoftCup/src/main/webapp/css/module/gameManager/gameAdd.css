@@ -20,6 +20,10 @@
     border-radius: 5px;
 }
 
+.panel-container-image{
+	width:400px;
+}
+
 .panel-title{
 	height: 40px;
     line-height: 40px;
@@ -39,11 +43,29 @@
 .panel-content ul{
     list-style: none;
     padding:0;
-    margin-top: 10px;
+    margin: 10px;
 }
 
 .panel-content ul li{
     margin-bottom:10px;
+}
+
+.panel-content .image-group-list li{
+	display:inline-block;
+	margin-bottom:10px;
+	margin-right:10px;
+	position: relative;
+}
+
+.panel-content .image-group-list li.selected-image:before{
+    content: url(../../../images/fengmian.png);
+    position: absolute;
+    top: -7px;
+    left: -7px;
+}
+
+.panel-content .image-group-list li:hover{
+	cursor: pointer;
 }
 
 .remove-item{
@@ -77,5 +99,56 @@
 }
 
 .hidden{
-    visibility: hidden;
+    display: none!important;
+}
+
+.image-options{
+    width: 100px;
+    height:80px;
+    background-color: rgba(200,200,200,0.3);
+    padding: 5px!important;
+    position: absolute;	
+    top: -14px;
+    left: -15px;
+}
+
+.image-options li{
+	text-align: center;
+    background-color: #cccccc;
+    border-radius: 5px;
+    padding: 2px 0;
+    margin-top: 10px;
+    margin-bottom: 0!important;
+    width:100%;
+}
+
+.options-selected{
+	margin-top:0!important;
+}
+
+#imageUpload{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.u-file-btnzone{
+	width:100px!important;
+	height:80px!important;
+}
+
+.u-file-btnzone:hover{
+	cursor: pointer;
+}
+
+#upload_info_table{
+	display:none!important;
+}
+
+.imageUploadAgain{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100px;
+	height:30px;
 }

@@ -1,16 +1,13 @@
 var main_params={
-    panelType:0
+    panelType:0,
+    file:false,
+    fileAgain:false,
+    currentImage:false
 };
 $(document).ready(function() {
     eventBinding();
     getGameType();
-    fileUploadInit({
-    	templateContainer:"fine-uploader-gallery",
-    	templateID:"qq-template",
-    	url:"",
-    	method:"post",
-    	isAutoUpload:true
-    });
+    //main_params.file = $('#upload_info').fileUpload({});
 	$('#name').Watermark("请输入大赛名称", "#8f8f8f");
 	$("#year").Watermark("例如:2016", "#8f8f8f");
 	
@@ -20,8 +17,8 @@ $(document).ready(function() {
 
 	//创建控件
 	$("#dialog-modal").createDialog({
-		height : 600,
-		width : 400,
+		height : 540,
+		width : 500,
 		modal : true,
 		close : function(event) {
 			if (!event.data) {
@@ -70,9 +67,33 @@ function hostUnitSelector(type,el){
         $(".panel-cancel").bind("click",function (){
             $(this).parents(".panel-container").addClass("hidden");
         });
+        $(".image-group-list").delegate("li","mouseover",function (){
+        	var options = $(this).children(".image-options");
+        	options.removeClass("hidden");
+        	$(this).hasClass("selected-image")?$(this).find(".options-selected").addClass("hidden"):
+    		$(this).find(".options-selected").removeClass("hidden");
+        });
+        $(".image-group-list").delegate("li","mouseout",function (){
+        	var options = $(this).children(".image-options");
+        	options.addClass("hidden");
+        });
+        $("#imageClick").bind("click",function (){
+        	$("#imageUpload").click();
+        });
+        $(".imageUpload").bind("mouseover",function (){
+        	main_params.fileAgain=false;
+        });
     }
     if(type===2){
-
+		var imageGroupPanel=$(".panel-container-image");
+		if(imageGroupPanel.length>0){
+			imageGroupPanel.removeClass("hidden");
+			imageGroupPanel.find("ul").html();
+        }else{
+        	$("#dialog-modal").prepend($("#imageGroupTemplate").html());
+        	commonEventBinding();
+        	initUploadBtn();
+        }
     } else{
         var hostUnitPanel = $(".panel-container");
         if(hostUnitPanel.length>0){
@@ -122,6 +143,46 @@ function getGameType(){
 	});
 }
 
+function setIndexImage(that){
+	var selectedOld=$(".selected-image");
+	selectedOld.removeClass("selected-image");
+	$(that).parents("li").addClass("selected-image");
+}
+
+function removeImage(that){
+	var item=$(that).parents("li");
+	main_params.file.emptyFile(item.children("img").attr("data-id"));
+	item.remove();
+}
+
+function addImage(src,id,container){
+	var imageItemHTML=$("#imageItemTemplate").html(),
+		imageValuedItemHTML=imageItemHTML.replace("{{imageSrc}}",src).replace("{{imageID}}",id).replace("{{uploadAgainID}}",id);
+	container.prepend(imageValuedItemHTML);
+}
+
+function uploadAgain(that){
+	main_params.currentImage=$(that).parent().prev("img");
+	main_params.fileAgain=true;
+	$(".MultiFile").click();
+}
+
+function initUploadBtn(){
+	main_params.file=$("#imageUpload").fileUpload({
+		uploadComplete:function (){
+			var images=main_params.file.getUploadedFiles();
+			for(var i=images.length-1,len=images.length;i<len;i++){
+				var image=images[i],
+					imageSrc=image.savePath,
+					imageID=image.id;
+				console.log(image);
+				!main_params.fileAgain?addImage(imageSrc,imageID,$(".image-group-list")):main_params.currentImage.attr("src",imageSrc).attr("data-id",id);
+			}
+		},
+		hideUploadFile:true
+	});
+}
+
 //验证输入框是否为空
 userDialogValid.valid = function(){
 	var name=$("#name").val();
@@ -164,28 +225,7 @@ function eventBinding(){
     $("#secondUnitName").bind("click",function (){
         hostUnitSelector(1,this);
     });
-}
-
-function fileUploadInit(options){
-    fileUploadConfig(options);
-}
-
-function fileUploadConfig(options){
-    var templateContent=document.getElementById(options.templateID);
-    var manualUploader = new qq.FineUploader({
-        element: document.getElementById(options.templateContainer),
-        template: options.templateID,
-        request: {
-            endpoint: options.url,
-            method: options.method
-        },
-        thumbnails: {
-            placeholders: {
-                waitingPath: 'js/fine-uploader/placeholders/waiting-generic.png',
-                notAvailablePath: 'js/fine-uploader/placeholders/not_available-generic.png'
-            }
-        },
-        autoUpload: options.isAutoUpload,
-        debug: true
+    $("#propagandaPath").bind("click",function (){
+        hostUnitSelector(2,this);
     });
 }
