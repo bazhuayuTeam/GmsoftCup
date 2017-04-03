@@ -1,8 +1,50 @@
 //页面加载
 $(document).ready(function() {
-	initSelect();//初始化搜索下拉框
+	//initSelect();//初始化搜索下拉框
+	initGame();
+	initGameStep();
+	initStep();
 	jQuery("#table").jqGrid(gridSetting);	
 });
+
+function initGame(){
+	var html="";
+	dwr.engine.setAsync(false);
+	GameService.findMapByPropertiesQuick(['gameId','gameName'],"1=1 order by startTime desc",false,function(data){
+		for(var i=0;i<data.length;i++){
+			html+="<option value='"+data[i].gameId+"'>"+data[i].gameName+"</option>"
+		}
+	})
+	dwr.engine.setAsync(true);
+	$("#name").append(html);
+}
+
+function initGameStep(){
+	var html="";
+	dwr.engine.setAsync(false);
+	CodeTableService.findMapByPropertiesQuick(['codeTableName',"codeTableCode"],
+		"codeTableCode like 'task%' and hasChild='0' and createId='"+operatorId+"'",false,function(data){
+		for(var i=0;i<data.length;i++){
+			html+="<option value='"+data[i].codeTableCode+"'>"+data[i].codeTableName+"</option>"
+		}
+	})
+	dwr.engine.setAsync(true);
+	$("#task").append(html);
+}
+
+function initStep(){
+	var html="";
+	var gameid=$("#game").val();
+	dwr.engine.setAsync(false);
+	GameStepService.findMapByPropertiesQuick(["gameStepName"],"gameid='"+gameid+"'",false,function(data){
+		for(var i=0;i<data.length;i++){
+			html+="<option value='"+data[i]["gameStepName"]+"'>"+data[i]["gameStepName"]+"</option>"
+		}
+	})
+	dwr.engine.setAsync(true);
+	$("#clazz").append(html);
+}
+
 
 function initSelect(){
 	dwr.engine.setAsync(false);
@@ -10,7 +52,7 @@ function initSelect(){
 	GameService.findMapByProperties([ 'gameName','gameId'], 
 		"state = '1'", 'gameId', 'asc',false, function(data) {
 		if(data){
-			var html = "<option value='all'>全部</option>";
+			var html = "";
 			for(var i in data) {
 				html+= "<option value='" + data[i]['gameId'] + "'>" + data[i]['gameName'] + "</option>";
 			}
@@ -22,7 +64,7 @@ function initSelect(){
 	CodeTableService.findMapByProperties([ 'CodeTableName', 'CodeTableCode'], 
 		"parentCode = 'gameStep'", 'CodeTableCode', 'asc',false, function(data) {
 			if(data){
-				var html = "<option value='all'>全部</option>";
+				var html = "";
 				for(var i in data) {
 					html+= "<option value='" + data[i]['CodeTableCode'] + "'>" + data[i]['CodeTableName'] + "</option>";
 				}

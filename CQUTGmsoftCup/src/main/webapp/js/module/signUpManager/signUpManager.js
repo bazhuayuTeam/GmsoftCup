@@ -36,7 +36,7 @@ var gridSetting = {
 	loadComplete:function(){
 		$(window).trigger('resize');
 	},
-	colNames : [ 'ID','竞赛名称','竞赛','类别ID', '竞赛类别', '团队名称', '参赛题目', '项目编号','组长ID', '组长','组员', '指导教师','状态', '操作' ],
+	colNames : [ 'ID','竞赛id','竞赛', '竞赛阶段', '团队名称', '题目', '项目编号','组长ID', '组长','组员', '指导教师','状态', '操作' ],
 	colModel : [ {
 		//代号	
 		key : true,
@@ -52,13 +52,8 @@ var gridSetting = {
 		index:'ga_gameStepID',
 		hidden:true
 	},{
-		//代码类型
-		name : 'mo_codeTableCode',
-		index : 'mo_codeTableCode',
-		hidden:true
-	},{
-		name : 'mo_codeTableName',
-		index : 'mo_codeTableName',
+		name : 'ga_gameStepName',
+		index : 'ga_gameStepName',
 		align:'center'
 	}, {
 		//名称
@@ -162,7 +157,7 @@ function initState(){
 
 function initStep(){
 	var html="";
-	var gameid=$("game").val();
+	var gameid=$("#game").val();
 	dwr.engine.setAsync(false);
 	GameStepService.findMapByPropertiesQuick(["gameStepName"],"gameid='"+gameid+"'",false,function(data){
 		for(var i=0;i<data.length;i++){
@@ -179,12 +174,9 @@ function quickSearch() {
 	var gameStyle = $("#gameStyle").val();   
 	var gameStep = $("#gameStep").val(); 
 	var state = $("#state").val();
-	var currentSearchCondition = "1=1 and gg.gameid='"+$("#game").val()+"'";
-	 if (gameStyle!= "all") {
-		currentSearchCondition ="gameStyle='" +gameStyle + "'";
-	}  
+	var currentSearchCondition = "1=1 and gg.gameid='"+$("#game").val()+"' and gg.createPersonId='"+operatorId+"'";
 	if (gameStep != "all") {
-		currentSearchCondition += " and mo.codeTableCode LIKE '%" + gameStep + "%'";
+		currentSearchCondition += " and ga.gameStepName='" + gameStep + "'";
 	} 
 	if(state!="all"){
 		currentSearchCondition+=" and checkState ='"+state+"'";
@@ -263,20 +255,17 @@ function exportData(){
 		var gameStyle = $("#gameStyle").val();   
 		var gameStep = $("#gameStep").val(); 
 		var state = $("#state").val();
-		var currentSearchCondition = "checkState!='2' and gg.gameid='"+$("#game").val()+"'";
+		var currentSearchCondition = "checkState!='2' and gg.gameid='"+$("#game").val()+"' and gg.createPersonId='"+operatorId+"'";
 		
-		 if (gameStyle!= "all") {
-			currentSearchCondition ="gameStyle='" +gameStyle + "'";
-		}  
 		if (gameStep != "all") {
-			currentSearchCondition += " and mo.codeTableCode LIKE '%" + gameStep + "%'";
+			currentSearchCondition += " and ga.gameStepName LIKE '%" + gameStep + "%'";
 		} 
 		if(state!="all"){
 			currentSearchCondition+=" and checkState ='"+state+"'";
 		}
 		var deriveSetting = {
 			dwrFun : TeamService.exportTable,
-			properties : ['teamId','ga_gameStepID','mo_codeTableCode','mo_codeTableName','teamName','title','no','captianId','checkState'],
+			properties : ['teamId','gg_gameID','ga_gameStepID','ga_gameStepName','teamName','title','no','captianId','checkState'],
 			condition : currentSearchCondition,
 			needLink : true,
 			templateName : "Propo",

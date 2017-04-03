@@ -112,4 +112,36 @@
 			gameresult.teamId
 		</target>
 	</relation>
-</setting>
+	<relation>
+		<source>
+			team.teamId
+		</source>
+		<target classAlias="rs"  linkType="0">
+			processResultDetail.signUpId
+		</target>
+	</relation>
+	<relation>
+		<source>
+			gs.gameStepDetailID
+		</source>
+		<target classAlias="st"  linkType="0">
+			processResultDetail.gameStepDetailID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			rs.fileId
+		</source>
+		<target classAlias="file"  linkType="0">
+			SystemFile.id
+		</target>
+	</relation>
+	<!--<relation>
+		<source>
+			gs.fileId
+		</source>
+		<target classAlias="st"  linkType="0">
+			processResultDetail.gameStepDetailID
+		</target>
+	</relation>
+--></setting>

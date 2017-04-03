@@ -126,23 +126,23 @@ public class TeamService implements ITeamService {
 			String condition, String sortField, String order, boolean needLink, int curPage, int limit) {
 		List<Map<String, Object>> data = mapDao.findTeams(properties, condition, sortField, order, needLink, ((curPage-1)*limit), limit);
 		for(int i=0;i<data.size();i++){
-			String captianId=data.get(i).get("captianId").toString();
-			String teamId=data.get(i).get("teamId").toString();
+			String captianId=data.get(i).get("captianId").toString();  //组长id
+			String teamId=data.get(i).get("teamId").toString();   //团队id
 			String[] proper={"name"};
 			List<Map<String, Object>> teamName=userService.findMapByPropertiesQuick(proper, "userID='"+captianId+"'", false);
 			if(teamName.size()>0){
 				data.get(i).put("captianName", teamName.get(0).get("name"));
 			}
 			//指导老师
-			String[] properName={"cr_name","crewId"};
+			String[] properName={"membernName","crewId"};
 			List<Map<String, Object>> teacherName=crewService.findMapByPropertiesQuick(properName, "teamID='"+teamId+"' and crew.type='2'", true);
 			String teachername="";
 			for(int j=0;j<teacherName.size();j++){
 				if(j!=teacherName.size()-1){
-					teachername+=teacherName.get(j).get("cr_name")+",";
+					teachername+=teacherName.get(j).get("membernName")+",";
 				}
 				else{
-					teachername+=teacherName.get(j).get("cr_name");
+					teachername+=teacherName.get(j).get("membernName");
 				}
 			}
 			data.get(i).put("teacher", teachername);
@@ -151,10 +151,10 @@ public class TeamService implements ITeamService {
 			String studentNames="";
 			for(int j=0;j<studentName.size();j++){
 				if(j!=studentName.size()-1){
-					studentNames+=studentName.get(j).get("cr_name")+",";
+					studentNames+=studentName.get(j).get("membernName")+",";
 				}
 				else{
-					studentNames+=studentName.get(j).get("cr_name");
+					studentNames+=studentName.get(j).get("membernName");
 				}
 			}
 			data.get(i).put("crewName", studentNames);
@@ -175,20 +175,20 @@ public class TeamService implements ITeamService {
 			data.get(i).put("captianName", teamName.get(0).get("name"));
 			}
 			//指导老师
-			String[] properName={"cr_name","crewId"};
+			String[] properName={"membernName","crewId"};
 			List<Map<String, Object>> teacherName=crewService.findMapByPropertiesQuick(properName, "teamID='"+teamId+"' and crew.type='1'", true);
 			String teachername="";
 			for(int j=0;j<teacherName.size();j++){
 				if(j!=teacherName.size()-1){
-					teachername+=teacherName.get(j).get("cr_name")+",";
+					teachername+=teacherName.get(j).get("membernName")+",";
 				}
 				else{
-					teachername+=teacherName.get(j).get("cr_name");
+					teachername+=teacherName.get(j).get("membernName");
 				}
 			}
 			data.get(i).put("teacher", teachername);
 			
-			String[] propStrings={"fileId"};
+			/*String[] propStrings={"fileId"};
 			List<Map<String, Object>> file=projectService.findMapByPropertiesQuick(propStrings, "teamId='"+teamId+"' and type='"+data.get(i).get("gs_type")+"'", false);
 			if(file.size()==0){
 				data.get(i).put("fileExit", 0);
@@ -196,7 +196,7 @@ public class TeamService implements ITeamService {
 			else{
 				data.get(i).put("fileExit", 1);
 				data.get(i).put("fileId", file.get(0).get("fileId"));
-			}
+			}*/
 		}
 		return data;
 	}
@@ -431,8 +431,8 @@ public class TeamService implements ITeamService {
 			}
 			
 		}
-		String[] pro={"mo_codeTableName","teamName","title","no","captianName","crewName","teacher","checkState"};
-	    String[] chineseStrings = {"竞赛类别","团队名称","参赛题目","项目编号","组长","组员","指导老师","状态"};
+		String[] pro={"ga_gameStepName","teamName","title","no","captianName","crewName","teacher","checkState"};
+	    String[] chineseStrings = {"竞赛阶段","团队名称","题目","项目编号","组长","组员","指导教师","状态"};
 	    int[] width = {50,50,70,70,50,100,50,50};
 	    String[] title = {"中","中","中","中","中","左","中","中"};
 	    return deriveExcelService.deriveExcelT(excelName,"planOfExam", data, pro, chineseStrings,title,width,excelName);

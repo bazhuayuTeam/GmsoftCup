@@ -28,7 +28,9 @@ public class CodeTable extends AbstractEntity {
 			"hasChild",
 			"codeTableValue",
 			"level0",
-			"chineseChar"
+			"chineseChar",
+			"createId",
+			"id"
 	};
 	private static final Class<?>[] PROPERTICE_TYPE = new Class[] {
 			String.class, 
@@ -38,6 +40,8 @@ public class CodeTable extends AbstractEntity {
 			Boolean.class, 
 			String.class,
 			Integer.class,
+			String.class,
+			String.class,
 			String.class
 	};
 
@@ -164,6 +168,24 @@ public class CodeTable extends AbstractEntity {
 
 	public void setChineseChar(String chineseChar) {
 		getProperties().put(PROPERTICE_NAME[7], chineseChar);
+	}
+	@Column
+	public String getCreateId() {
+		Object obj = getProperties().get(PROPERTICE_NAME[8]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setCreateId(String createId) {
+		getProperties().put(PROPERTICE_NAME[8], createId);
+	}
+	@Column
+	public String getId() {
+		Object obj = getProperties().get(PROPERTICE_NAME[9]);
+		    return obj != null ? obj.toString() : null;
+	}
+
+	public void setId(String id) {
+		getProperties().put(PROPERTICE_NAME[9], id);
 	}
 	@Transient
 	@Override

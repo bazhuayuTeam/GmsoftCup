@@ -39,7 +39,7 @@ var gridSetting = {
 	loadComplete:function(){
 		$(window).trigger('resize');
 	},
-	colNames : [ 'ID','竞赛id','竞赛','类别ID', '竞赛类别','竞赛任务', '团队名称', '参赛题目', '项目编号','组长ID', '组长', '指导教师','状态','是否提交文档','文件ID', '操作' ],
+	colNames : [ 'ID','竞赛id','detail','类别ID','createid', 'modeid','竞赛阶段','团队id','团队赛制id','赛制流程', '团队名称', '题目', '项目编号','组长ID', '组长', '指导教师','状态','文件ID', '操作' ],
 	colModel : [  {
 		//代号	
 		key : true,
@@ -51,22 +51,39 @@ var gridSetting = {
 		index:'gg_gameID',
 		hidden:true
 	} ,{
+		name:'gs_processID',
+		index:'gs_processID',
+		hidden:true
+	},{
 		name:'ga_gameStepID',
 		index:'ga_gameStepID',
 		hidden:true
 	},{
-		//代码类型
-		name : 'mo_codeTableCode',
-		index : 'mo_codeTableCode',
+		name:'mo_createId',
+		index:'mo_createId',
 		hidden:true
 	},{
-		name : 'mo_codeTableName',
-		index : 'mo_codeTableName',
-		align:'center'
-	}, {
-		name:'gs_type',
-		index:'gs_type',
+		name:'mo_codeTableCode',
+		index:'mo_codeTableCode',
 		hidden:true
+	},{
+		name : 'ga_gameStepName',
+		index : 'ga_gameStepName',
+		align:'center'
+	},{
+		name : 'rs_signUpId',
+		index : 'rs_signUpId',
+		align:'center',
+		hidden:true
+	} ,{
+		name : 'st_processResultDetailID',
+		index : 'st_processResultDetailID',
+		align:'center',
+		hidden:true
+	},{
+		name:'mo_codeTableName',
+		index:'mo_codeTableName',
+		align:'center'
 	},{
 		//名称
 		name : 'teamName',
@@ -106,20 +123,8 @@ var gridSetting = {
 		index:'checkState',
 		hidden:true
 	},{
-		name:'fileExit',
-		index:null,
-		align:'center',
-		formatter:function(data){
-			if(data=="0"){
-				return "否";
-			}
-			else if(data=="1"){
-				return "是";
-			}
-		}
-	} ,{
-		name:'fileId',
-		index:null,
+		name:'st_fileId',
+		index:'st_fileId',
 		hidden:true
 	},{
 		//操作
@@ -174,7 +179,7 @@ function initGameStep(){
 	var html="";
 	dwr.engine.setAsync(false);
 	CodeTableService.findMapByPropertiesQuick(['codeTableName',"codeTableCode"],
-		"codeTableCode like 'task%' and hasChild='0'",false,function(data){
+		"codeTableCode like 'task%' and hasChild='0' and createId='"+operatorId+"'",false,function(data){
 		for(var i=0;i<data.length;i++){
 			html+="<option value='"+data[i].codeTableCode+"'>"+data[i].codeTableName+"</option>"
 		}
@@ -194,10 +199,11 @@ function initState(){
 
 function initStep(){
 	var html="";
+	var gameid=$("#game").val();
 	dwr.engine.setAsync(false);
-	GameStepService.findMapByPropertiesQuick(["gameStep","mo_codeTableName"],"true=true",true,function(data){
+	GameStepService.findMapByPropertiesQuick(["gameStepName"],"gameid='"+gameid+"'",false,function(data){
 		for(var i=0;i<data.length;i++){
-			html+="<option value='"+data[i]["gameStep"]+"'>"+data[i]["mo_codeTableName"]+"</option>"
+			html+="<option value='"+data[i]["gameStepName"]+"'>"+data[i]["gameStepName"]+"</option>"
 		}
 	})
 	dwr.engine.setAsync(true);
@@ -209,12 +215,15 @@ function initStep(){
 function quickSearch() {   
 	var gameStep = $("#gameStep").val(); 
 	var type=$("#type").val();
-	var currentSearchCondition="gs.type='"+type+"'";
+	
+	var currentSearchCondition="mo.createId='"+operatorId+"'";
 	var gameid=$("#game").val();
+
+	currentSearchCondition+=" and mo.codeTableCode='"+type+"'";
 	if (gameStep != "all") {
-		currentSearchCondition += " and mo.codeTablecode='" + gameStep + "'";
+		currentSearchCondition += " and ga.gameStepName='" + gameStep + "'";
 	} 
-	currentSearchCondition+=" and gg.gameid='"+gameid+"'";
+	currentSearchCondition+=" and gg.gameid='"+gameid+"' and gg.createPersonId='"+operatorId+"'";
 	jQuery("#codeTableTable").setGridParam( {
 		searchCondition : currentSearchCondition,
 		page:1
@@ -224,10 +233,10 @@ function quickSearch() {
 //表格中的操作这一列的显示样式
 function codetableColumn_formater(data, d2, d3, d4) {
 	var state=d3.fileExit;
-	var fileId=d3.fileId;
+	var fileId=d3.st_fileId;
 	var alink = "";
-	if(state=="1"){
-		alink = "<a href='javascript:void(0)' onclick=\"getID('" + d2.rowId + "','"+d3.gs_type+"');\"><span class='sheetWord'>下载文档</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"		
+	if(fileId){
+		alink = "<a href='javascript:void(0)' onclick=\"loadFile('"+fileId+"');\"><span class='sheetWord'>下载文档</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"		
 	}		
 	return alink;
 }
