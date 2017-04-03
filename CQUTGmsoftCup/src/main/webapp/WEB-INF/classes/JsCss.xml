@@ -291,6 +291,11 @@
  <component name="dwrUtil">
   	  <jsFile src="js/util/DwrUtil.js"></jsFile>
   </component>
+ <!-- Bootstrap -->
+ <component name="bootstrap">
+  	  <cssFile src="css\plugins\bootstrap-3.3.7-dist\css\bootstrap.min.css"></cssFile>
+  	  <jsFile src="css\plugins\bootstrap-3.3.7-dist\js\bootstrap.min.js"></jsFile>
+  </component>  
 </RESULT> 
 
 
