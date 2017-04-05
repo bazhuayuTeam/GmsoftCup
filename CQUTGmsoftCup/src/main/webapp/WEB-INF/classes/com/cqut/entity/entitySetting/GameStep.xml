@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>		
+	<relation>
+		<source>
+			GameStep.gameStepID
+		</source>
+		<target classAlias="gsd" linkType="0">
+			GameStepDetail.parentID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			gsd.standardVersionID
+		</source>
+		<target classAlias="sv"  linkType="0">
+			StandardVersion.standardVersionID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			gsd.processID
+		</source>
+		<target classAlias="ct"  linkType="0">
+			CodeTable.codeTableCode
+		</target>
+	</relation>
+</setting>

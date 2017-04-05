@@ -6,15 +6,14 @@ var pageData={
 $(document).ready(function() {
 	if(ChildDialogUtil.getExchangeData){
 		 data = ChildDialogUtil.getExchangeData();
-		 $("#name").val(data.name);
-		 $("#year").val(data.year);
-		 $("#startTime").val(data.startTime);
-		 $("#endTime").val(data.endTime);
+		 getProcess();
+		 getStandardVersion(data);
+		 getData(data);
 	}
 	
 	//创建控件
 	$("#dialog-modal").createDialog({
-		height : 310,
+		height :500,
 		width : 400,
 		resizable : false,
 		modal : true,
@@ -43,6 +42,49 @@ $(document).ready(function() {
 		}
 	});
 });
+
+function getData(id){
+	var properties=["ct_codeTableCode","gsd_gameTime","sv_standardVersionID","gsd_checkStartTime","gsd_checkEndTime","gsd_works","gsd_startTime","gsd_endTime","gsd_fileID"];
+	GameStepService.findMapByPropertiesQuick(properties
+	,"gsd.parentID='"+id+"'",true,function (data){
+		if(data&&data.length>0){
+			var info=data[0];
+			setTimeout(function (){
+				$("#processID").val(info.ct_codeTableCode);
+				$("#standardVersionName").val(info.sv_standardVersionID);
+			},500);
+			$("#gameTime").val(DateUtil.dateDiffMills(info.gsd_gameTime));
+			$("#checkStartTime").val(DateUtil.dateDiffMills(info.gsd_checkStartTime));
+			$("#checkEndTime").val(DateUtil.dateDiffMills(info.gsd_checkEndTime));
+			$("#works").val(info.gsd_works);
+			$("#startTime").val(DateUtil.dateDiffMills(info.gsd_startTime));
+			$("#endTime").val(DateUtil.dateDiffMills(info.gsd_endTime));
+			$("#fileID").attr("data-id",info.gsd_fileID);
+		}else{
+			jAlert("加载数据失败");
+		}
+	});
+}
+
+function getProcess(){
+	CodeTableService.findMapByPropertiesQuick(["codeTableCode","codeTableName"],"parentCode='task'",false,function (data){
+		var processHTML="";
+		for(var i=0,len=data.length;i<len;i++){
+			processHTML+=("<option value='"+data[i].codeTableCode+"'>"+data[i].codeTableName+"</option>");
+		}
+		$("#processID").html(processHTML);
+	});
+}
+
+function getStandardVersion(id){
+	StandardVersionService.findMapByPropertiesQuick(["standardVersionID","standardVersionName"],"",false,function (data){
+		var standardVersionHTML="";
+		for(var i=0,len=data.length;i<len;i++){
+			standardVersionHTML+=("<option value='"+data[i].standardVersionID+"'>"+data[i].standardVersionName+"</option>");
+		}
+		$("#standardVersionName").html(standardVersionHTML);
+	});
+}
 
 //验证输入框是否为空
 userDialogValid.valid = function(){

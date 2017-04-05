@@ -56,10 +56,16 @@ a {
 			</li>
 		</ul>
 		
-		<div style="position: absolute; top: 150px; bottom: 0; left: 18px; width: auto; float: left; height: auto; right: 20px;">
+		<div id="gameTableContainer" style="position: absolute; top: 150px; bottom: 0; left: 18px; width: auto; float: left; height: auto; right: 20px;">
 			<div id="MainArea" style="width: 100%;">
 				<table id="gameTable" border="0" width="100%"></table>
 				<div id="gamePager"></div>
+			</div>
+		</div>
+		<div id="gameStepTableContainer" style="position: absolute; top: 150px; bottom: 0; left: 18px; width: auto; float: left; height: auto; right: 20px;display:none;">
+			<div id="MainStepArea" style="width: 100%;">
+				<table id="gameStepTable" border="0" width="100%"></table>
+				<div id="gameStepPager"></div>
 			</div>
 		</div>
 		<script type="text/javascript" src="js/module/gameManager/gameManager.js">

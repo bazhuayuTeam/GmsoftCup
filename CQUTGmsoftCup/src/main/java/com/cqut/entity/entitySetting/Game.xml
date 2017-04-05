@@ -10,10 +10,18 @@
 	</relation>
 	<relation>
 		<source>
+			Game.gameID
+		</source>
+		<target classAlias="me"  linkType="0">
+			Game.gameID
+		</target>
+	</relation>
+	<relation>
+		<source>
 			gs.gameStepID
 		</source>
 		<target classAlias="gsd" linkType="0">
-			GameStep.parentID
+			GameStepDetail.parentID
 		</target>
 	</relation>
 </setting>

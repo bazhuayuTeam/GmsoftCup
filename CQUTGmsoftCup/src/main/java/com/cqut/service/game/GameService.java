@@ -59,6 +59,13 @@ public class GameService implements IGameService {
 	}
 	
 	@RemoteMethod
+	public List<Map<String, Object>> findGameStep(String[] properties,
+			String condition, String sortField, String order, boolean needLink, int curPage, int limit) {
+		List<Map<String, Object>> data = mapDao.findGames(properties, condition, sortField, order, needLink, ((curPage-1)*limit), limit);
+		return data;
+	}
+	
+	@RemoteMethod
 	public List<Map<String, Object>> findMapByProperties(String[] properties,
 			String condition, String sortField, String order, boolean needLink) {
 		List<Map<String, Object>> data = mapDao.findGames(properties, condition, sortField, order, needLink, -1, -1);
