@@ -321,7 +321,6 @@
 	
 	//在页面里显示文件
 	function addFileShowInPage(data, readOnly){
-		console.log(data);
 		if($('.u-file-waiting').data('history')== undefined){
 			$('.u-file-waiting').data('history',[]);
 		}

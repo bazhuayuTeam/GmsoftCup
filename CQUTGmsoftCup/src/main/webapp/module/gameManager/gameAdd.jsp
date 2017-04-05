@@ -32,7 +32,7 @@
 					<tr>
 						<td class="lableWord">竞赛名称</td>
 						<td style="width: 170px;">
-							<input class="inputEdit" type="text" id='name' field='modulename' placeholder="请输入竞赛名称" save='true'/>
+							<input class="inputEdit" type="text" id="gameName" field='modulename' placeholder="请输入竞赛名称" save='true'/>
 						</td>
 					</tr>
 					<tr>
@@ -44,19 +44,19 @@
 							</select>
 						</td>
 					</tr>
-					<tr>
+					<tr class="forStage">
 						<td class="lableWord">报名开始时间</td>
 						<td>
 							<input id="startTime" placeholder="请输入报名开始时间" style="background-color:#fff;border:1px solid #AFAFAF;" fieldtype="timepicker" class="inputEdit" type="text" field='distributeTime' save='true' format="yyyy-MM-dd mm:ss" disabled="disabled" />
 						</td>
 					</tr>
-					<tr>
+					<tr class="forStage">
 						<td class="lableWord">报名截止时间</td>
 						<td>
 							<input id="endTime" placeholder="请输入报名截止时间" style="background-color:#fff;border:1px solid #AFAFAF;" fieldtype="timepicker" value="" class="inputEdit" type="text" field='distributeTime' save='true' format="yyyy-MM-dd mm:ss" disabled="disabled" />
 						</td>
 					</tr>
-					<tr>
+					<tr class="forStage">
 						<td class="lableWord">参赛形式</td>
 						<td>
 							<select id="competitionType">
@@ -133,7 +133,7 @@
         </div>
 	</script>
 	<script type="text/template" id="imageGroupTemplate">
-        <div class="panel-container panel-container-image">
+        <div class="panel-container-image">
             <header class="panel-title"><h3>上传宣传图片</h3></header>
             <div class="panel-content">
                 <ul class="image-group-list">
@@ -151,7 +151,7 @@
 	</script>
 	<script type="text/template" id="imageItemTemplate">
 		<li>
-             <img src="{{imageSrc}}" data-id="{{imageID}}" width=100 height=80>
+             <img class="uploadImage" src="{{imageSrc}}" data-id="{{imageID}}" width=100 height=80>
              <ul class="image-options hidden">
 		          <li class="options-selected" onclick="setIndexImage(this)">设为封面</li>
 		          <li onclick="uploadAgain(this)">重新上传<div class="imageUploadAgain" id="imageUploadAgain{{uploadAgainID}}"></div></li>

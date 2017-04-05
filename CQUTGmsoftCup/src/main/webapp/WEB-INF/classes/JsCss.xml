@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RESULT>
+  <component name="jquery-ui-all"><!--jquery-ui-all-->
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+  	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+  	<cssFile src="css/themes/webTheme/jquery.ui.all.css"></cssFile>
+	<jsFile src="js/jquery/jquery-1.6.2.min.js"></jsFile>
+    <jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.core.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.accordion.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.autocomplete.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.button.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.datepicker.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.dialog.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.draggable.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.droppable.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.mouse.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.position.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.progressbar.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.resizable.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.selectable.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.slider.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.sortable.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.tabs.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.widget.js"></jsFile>
+  </component>
+  <component name="jquery-plugin"><!--jquery动态加载-->
+    
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+	<cssFile src="css/themes/webTheme/jquery.ui.all.css"></cssFile>
+	<jsFile src="js/jquery/jquery-1.8.3.min.js"></jsFile>
+    <jsFile src="plugins/components/jquery.plugin-min.js"></jsFile>	
+  </component>
+  <component name="jqGrid">
+	
+	<jsFile src="js/util/controler.js"></jsFile>
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+	<cssFile src="css/plugins/components/ui.jqgrid.css"></cssFile>	
+	<cssFile src="css/plugins/components/jqgrid.css"></cssFile>
+	<cssFile src="css/themes/webTheme/jquery.ui.all.css"></cssFile>
+	<jsFile src="js/jquery/jquery-1.6.2.min.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14.custom/jquery-ui-1.8.14.custom.min.js"></jsFile>
+    <jsFile src="js/jquery/i18n/grid.locale-cn.js"></jsFile>
+    <jsFile src="js/jquery/jquery.jqGrid.src.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.widget.js"></jsFile>
+	<jsFile src="plugins/components/ui.multiselect.js"></jsFile>
+	<jsFile src="js/util/CommonUtil.js"></jsFile>
+	<jsFile src="js/component/messageWin.js"></jsFile>
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.altclass.css"></cssFile>
+  </component>
+  <component name="tree">
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+    <cssFile src="css/plugins/components/zTreeStyle/zTreeStyle.css"></cssFile>	
+    <cssFile src="css/themes/webTheme/jquery.ui.all.css"></cssFile>
+	<jsFile src="js/jquery/jquery-1.6.2.min.js"></jsFile>
+	<jsFile src="js/jquery/jquery.ztree-2.6.js"></jsFile>
+	<jsFile src="js/util/CommonUtil.js"></jsFile>
+  </component>
+  <component name="dwr">
+    
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+	<cssFile src="css/themes/webTheme/jquery.ui.all.css"></cssFile>
+	<jsFile src="js/jquery/jquery-1.6.2.min.js"></jsFile>
+    <jsFile src="dwr/engine.js"></jsFile>
+  </component>
+  
+  <component name="userDialogValid">
+    <jsFile src="js/common/userDialogValid/userDialogValid.js"></jsFile>
+  </component>
+  
+  <!-- 弹框 -->
+  <component name="dialog">
+    
+	<!-- <cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+	<cssFile src="css/plugins/jquery-ui-1.8.14/theme/demos.css"></cssFile>
+	<cssFile src="css/themes/webTheme/jquery.ui.all.css"></cssFile>
+	
+	<jsFile src="js/jquery/jquery-1.6.2.min.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14.custom/jquery-ui-1.8.14.custom.min.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.core.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.widget.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.button.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.dialog.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14/external/jquery.bgiframe-2.1.2.js"></jsFile> -->
+    <jsFile src="plugins/cqut/cqut.dialog.js"></jsFile>
+	<jsFile src="plugins/cqut/cqut.field.js"></jsFile>
+	<jsFile src="js/util/DialogUtil.js"></jsFile>
+	<jsFile src="js/util/TemplateModule.js"></jsFile>
+	<jsFile src="js/util/FormUtil.js"></jsFile>
+	<jsFile src="js/util/WindowManage.js"></jsFile>
+	<jsFile src="js/util/CommonUtil.js"></jsFile>
+  </component>
+  
+  
+  <component name="singleselect">
+    
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+	<cssFile src="css/themes/webTheme/jquery.ui.all.css"></cssFile>
+    <jsFile src="js/component/selectComponent/selectTable.js"></jsFile>
+	<jsFile src="js/util/CommonUtil.js"></jsFile>
+  </component>
+  <component name="multiselect">
+    
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+	<cssFile src="css/themes/webTheme/jquery.ui.all.css"></cssFile>
+	<jsFile src="js/jquery/jquery-1.6.2.min.js"></jsFile>
+    <jsFile src="js/component/MultiSelectComponent/multiSelectTable.js"></jsFile>
+	<jsFile src="js/util/CommonUtil.js"></jsFile>
+  </component>
+  <component name="treeselect">
+    
+	<cssFile src="css/plugins/jquery-ui-1.8.14/base/jquery.ui.all.css"></cssFile>	
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+	<jsFile src="js/jquery/jquery-1.6.2.min.js"></jsFile>
+    <jsFile src="js/component/TreeGridComponent/treeGridTable.js"></jsFile>
+	<jsFile src="js/util/CommonUtil.js"></jsFile>
+  </component>
+  <component name="date">	
+	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.datepicker.js"></jsFile>
+    <jsFile src="js/component/MultiSelectComponent/multiSelectTable.js"></jsFile>
+  </component>
+  <component name="watermark">
+	<jsFile src="js/util/jquery.watermarkinput.js"></jsFile>
+  </component>
+  <component name="editor">
+	<cssFile src="plugins/kindeditor/index.css"></cssFile>	
+	<jsFile src="plugins/kindeditor/kindeditor.js"></jsFile>
+  </component>
+  <component name="mask">
+	<cssFile src="css/plugins/jquery-loadmask/jquery.loadmask.css"></cssFile>
+	<jsFile src="js/jquery/jquery.loadmask.js"></jsFile>
+  </component>
+  <component name="file">
+	<cssFile src="css/plugins/components/fileUpload/fileUpload.css"></cssFile>
+	<cssFile src="css/plugins/jquery-loadmask/jquery.loadmask.css"></cssFile>
+	<jsFile src="js/component/fileUploadComponent.js"></jsFile>
+	<jsFile src="js/jquery/jquery.MultiFile.js"></jsFile>
+	<jsFile src="js/jquery/jquery.loadmask.js"></jsFile>
+  </component>
+  
+  <component name="print">
+  	<cssFile src="css/plugins/print/printCss.css"></cssFile>
+    <jsFile src="plugins/print/printjs.js"></jsFile>
+  </component>
+  
+  <component name="validate">
+	<cssFile src="css/validation/customMessage.css"></cssFile>
+	<cssFile src="css/validation/validationEngine.jquery.css"></cssFile>
+	<jsFile src="js/jquery/jquery.validationEngine-zh_CN.js"></jsFile> 
+	<jsFile src="js/jquery/jquery.validationEngine.js"></jsFile>
+  </component>
+  
+  <component name="suggest">
+	
+	<cssFile src="css/plugins/jquery-ui-1.8.14.custom.jqgrid/jquery-ui-1.8.14.custom.css"></cssFile>
+	<cssFile src="css/plugins/components/ui.jqgrid.css"></cssFile>	
+	<cssFile src="css/plugins/components/jqgrid.css"></cssFile>
+	<cssFile src="css/themes/webTheme/jquery.ui.all.css"></cssFile>
+	<jsFile src="js/jquery/jquery-1.6.2.min.js"></jsFile>
+	<jsFile src="plugins/jquery-ui-1.8.14.custom/jquery-ui-1.8.14.custom.min.js"></jsFile>
+	<jsFile src="plugins/components/jquery.plugin-min.js"></jsFile>	
+  </component>
+  <component name="ztree3.0">
+	<cssFile src="css/plugins/components/zTreeStyle3.0/zTreeStyle.css"></cssFile>
+	<jsFile src="js/component/zTreeStyle3.0/jquery.ztree.all-3.0.min.js"></jsFile>
+	<jsFile src="js/component/zTreeStyle3.0/plugins/ztree.plugins.so-1.0.js"></jsFile>
+  </component>
+  <component name="util">
+  	<jsFile src="js/util/JsonUtil.js"></jsFile>
+  	<jsFile src="js/util/DateUtil.js"></jsFile>
+  </component>
+    <component name="timepicker">
+  	<cssFile src="css/plugins/jquery-ui-1.8.14/base/timepicker.css"></cssFile>
+  	<jsFile src="plugins/jquery-ui-1.8.14/jquery.ui.datepicker.js"></jsFile>
+  	<jsFile src="plugins/jquery-ui-1.8.14/jquery-ui-timepicker-addon.js"></jsFile>
+  </component>
+  
+  <component name="tips">
+  	<jsFile src="js/jquery/jquery.blockUI.js"></jsFile>
+  	<jsFile src="js/component/messageWin.js"></jsFile>
+  </component>
+  
+  <component name="push">
+  	<jsFile src="dwr/interface/PushService.js"></jsFile>
+  	<jsFile src="js/util/push.js"></jsFile>
+  </component>
+  
+  <component name="json">
+  	<jsFile src="js/util/json2.js"></jsFile>
+  </component>
+   <component name="tipswindown">
+  	<jsFile src="js/plugins/tipswindown.js"></jsFile>
+  	<cssFile src="js/plugins/tipswindown.css"></cssFile>
+  </component>
+  <!-- easyui组件 -->
+  <component name="easyui">
+  	<jsFile src="js/plugins/jquery.easyui.min.js"></jsFile>
+  	<cssFile src="themes/default/easyui.css"></cssFile>
+  	<cssFile src="themes/icon.css"></cssFile>
+  </component>
+  <!-- 验证组件 -->
+  <component name="verification">
+  	<jsFile src="js/common/verification/verification.js"></jsFile>
+  </component>
+    <!-- kindEditor4.x -->
+  <component name="kindEditor">
+  	<cssFile src="plugins/kindeditor/index.css"></cssFile>	
+	<jsFile src="plugins/kindeditor/kindeditor.js"></jsFile>
+  	<!-- <jsFile src="js/plugins/kindEditor4/kindeditor-min.js"></jsFile>
+  	<jsFile src="js/plugins/kindEditor4/lang/zh_CN.js"></jsFile>
+  	<jsFile src="js/plugins/kindEditor4/plugins/code/prettify.js"></jsFile>
+  	<cssFile src="js/plugins/kindEditor4/plugins/code/prettify.css"></cssFile>
+  	<cssFile src="js/plugins/kindEditor4/themes/default/default.css"></cssFile>
+  	 -->
+  </component>
+  <!-- 对话框-->
+  <component name="dialogNew">
+    <cssFile src="css/common/dialog/jquery.dialog.css"></cssFile>
+    <jsFile src="js/jquery/jquery-1.6.2.min.js"></jsFile>	
+  	<jsFile src="js/common/dialog/jquery.dialog.js"></jsFile> 	
+  </component>
+  <!-- selector 人员选择器-->
+  <component name="selector">
+  	<jsFile src="js/common/selector/selector.js"></jsFile> 	
+  	<cssFile src="css/common/selector/selector.css"></cssFile>
+  </component>
+  <!-- dropDownBox 下拉框-->
+  <component name="dropDownBox">
+  	<jsFile src="js/common/dropDownBox/dropDownBox.js"></jsFile> 	
+  </component>
+  
+  <!-- 自定义表格分页 -->
+  <component name="selfTablePage">
+  	<jsFile src="js/common/pager/pager.js"></jsFile>
+  	<cssFile src="css/common/pager/pager.css"></cssFile> 	
+  </component>
+  
+  <!--页面基础样式设置  -->
+  <!--commonStyle.css  包含页面的最基本的样式 -->
+  <component name="commonStyle">
+  	<cssFile src="css/common/basicStyle/commonStyle.css"></cssFile> 	
+  </component>
+  <!--navigate.css  路径样式  -->
+  <component name="navigate">
+  	<cssFile src="css/base/navigate.css"></cssFile> 	
+  </component>
+   <!--pageBasic.css  头部标题栏  -->
+  <component name="pageBasic">
+  	<cssFile src="css/common/topStyle/pageBasic.css"></cssFile> 	
+  </component>
+   <!--新增编辑样式设置  -->
+   <!--addAndEdit.css   -->
+   <component name="addAndEdit">
+  	<cssFile src="css/common/addAndEdit/addAndEdit.css"></cssFile> 	
+  </component>
+  <!-- 搜索栏样式 -->
+  <component name="searchBox">
+  	<cssFile src="css/common/searchBox/searchBox.css"></cssFile> 	
+  </component>
+  
+  <!-- 自定义表格 -->
+  <component name="selfTable">
+  	<cssFile src="css/common/selfTable/selfTable.css"></cssFile> 	
+  </component>
+  
+  <!-- 滚动条插件 -->
+  <component name="nicescroll">
+  	<jsFile src="js/plugins/nicescroll/jquery.nicescroll.min.js"></jsFile>
+  </component>
+   <!-- 文字通用样式 -->
+  <component name="wordStyle">
+  	  <cssFile src="css/common/wordStyle/wordStyle.css"></cssFile>
+  </component>
+  
+  <!-- 没有数据样式 -->
+  <component name="noData">
+  	  <cssFile src="css/common/noData/noData.css"></cssFile>
+  	  <jsFile src="js/common/noData/noData.js"></jsFile>
+  </component>
+  
+ <!--  卡片样式 -->
+  <component name="card">
+  	  <cssFile src="css/common/cardCommon/cardCommon.css"></cssFile>
+  </component>
+  
+  <!-- 离开验证 -->
+  <component name="leaveValidation">
+  	  <jsFile src="js/common/leaveValidation/leaveValidation.js"></jsFile>
+  </component>
+ 
+ <!-- DwrUtil -->
+ <component name="dwrUtil">
+  	  <jsFile src="js/util/DwrUtil.js"></jsFile>
+  </component>
+ <!-- Bootstrap -->
+ <component name="bootstrap">
+  	  <cssFile src="css\plugins\bootstrap-3.3.7-dist\css\bootstrap.min.css"></cssFile>
+  	  <jsFile src="css\plugins\bootstrap-3.3.7-dist\js\bootstrap.min.js"></jsFile>
+  </component>  
+</RESULT> 
+
+
+
+

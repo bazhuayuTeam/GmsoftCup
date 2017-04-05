@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+	<relation>
+		<source>
+			Target.targetCode
+		</source>
+		<target classAlias="me"  linkType="0">
+			Target.targetCode
+		</target>
+	</relation>	
+	<relation>
+		<source>
+			me.targetCode
+		</source>
+		<target classAlias="objRelated"  linkType="0">
+			ObjectRelated.relatedObjectCode
+		</target>
+	</relation>	
+	<relation>
+		<source>
+			objRelated.relatedDocumentID
+		</source>
+		<target classAlias="relatedDoc"  linkType="0">
+			RelatedDocument.relatedDocumentID
+		</target>
+	</relation>	
+	<relation>
+		<source>
+			me.standardVersionID
+		</source>
+		<target classAlias="standard"  linkType="0">
+			standardVersion.standardVersionID
+		</target>
+	</relation>	
+	<relation>
+		<source>
+			standard.standardVersionID
+		</source>
+		<target classAlias="gameStep"  linkType="0">
+			gameStepDetail.standardVersionID
+		</target>
+	</relation>	
+	<relation>
+		<source>
+			me.targetCode
+		</source>
+		<target classAlias="ta"  linkType="0">
+			targetScore.targetCode
+		</target>
+	</relation>	
+	<relation>
+		<source>
+			ta.expertTargetDistributeID
+		</source>
+		<target classAlias="expertTarget"  linkType="0">
+			expertTargetDistribute.expertTargetDistributeID
+		</target>
+	</relation>	
+</setting>

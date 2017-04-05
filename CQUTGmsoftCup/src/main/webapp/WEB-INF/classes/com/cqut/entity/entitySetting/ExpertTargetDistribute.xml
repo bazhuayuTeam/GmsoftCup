@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+	<relation>
+		<source>
+			expertTargetDistribute.expertID
+		</source>
+		<target classAlias="ex"  linkType="0">
+			expert.expertID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			expertTargetDistribute.gameStepDetailId
+		</source>
+		<target classAlias="eg"  linkType="0">
+			gameStepDetail.gameStepDetailID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			eg.type
+		</source>
+		<target classAlias="ec"  linkType="0">
+			CodeTable.codeTableID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			eg.gameStepD
+		</source>
+		<target classAlias="ga"  linkType="0">
+			gameStep.gameStepID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			ga.gameStep
+		</source>
+		<target classAlias="gc"  linkType="0">
+			CodeTable.codeTableID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			ga.gameID
+		</source>
+		<target classAlias="gg"  linkType="0">
+			game.gameID
+		</target>
+	</relation>
+</setting>

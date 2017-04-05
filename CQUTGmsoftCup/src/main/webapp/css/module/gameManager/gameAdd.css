@@ -22,6 +22,16 @@
 
 .panel-container-image{
 	width:400px;
+	height:300px;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    background-color: #ffffff;
+    border: 1px solid #348be7;
+    border-radius: 5px;
 }
 
 .panel-title{

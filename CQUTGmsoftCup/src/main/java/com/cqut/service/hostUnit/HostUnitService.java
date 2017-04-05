@@ -1,5 +1,6 @@
 package com.cqut.service.hostUnit;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,12 +9,12 @@ import javax.annotation.Resource;
 import org.directwebremoting.annotations.RemoteMethod;
 import org.directwebremoting.annotations.RemoteProxy;
 import org.springframework.stereotype.Controller;
+
 import com.cqut.service.util.fileManage.excel.ExcelService;
 import com.cqut.dao.common.ICommonDao;
 import com.cqut.dao.hostUnit.customInterface.IHostUnitEntityDao;
 import com.cqut.dao.hostUnit.customInterface.IHostUnitMapDao;
 import com.cqut.entity.hostUnit.HostUnit;
-
 import com.cqut.service.hostUnit.customInterface.IHostUnitService;
 
 @Controller  
@@ -147,5 +148,54 @@ public class HostUnitService implements IHostUnitService {
 		return false;
 	}
 	
-
+	@RemoteMethod
+	public boolean saveData(Map<String,String> data) {
+		String[] hostUnits= data.get("hostUnitName").split(",");
+		String[] secondUnits= data.get("secondUnitName").split(",");
+		String gameID=data.get("gameId");
+		for(int i=0,len=hostUnits.length;i<len;i++){
+			HostUnit hostUnit=new HostUnit();
+			hostUnit.setGameId(gameID);
+			hostUnit.setHostUnitName(hostUnits[i]);
+			hostUnit.setType("0");
+			saveEntity(hostUnit);
+		}
+		for(int i=0,len=secondUnits.length;i<len;i++){
+			HostUnit hostUnit=new HostUnit();
+			hostUnit.setGameId(gameID);
+			hostUnit.setHostUnitName(secondUnits[i]);
+			hostUnit.setType("1");
+			saveEntity(hostUnit);
+		}
+		return true;
+	}
+	
+	@RemoteMethod
+	public boolean updateData(Map<String,String> data) {
+		String[] hostUnits= data.get("hostUnitName").split(",");
+		String[] secondUnits= data.get("secondUnitName").split(",");
+		String gameID=data.get("gameId");
+		List<Map<String,Object>> hostUnitIDs=findMapByPropertiesQuick(new String[]{"hostUnitId"},"gameId='"+gameID+"'",false);
+		String[] removeIDs=new String[hostUnitIDs.size()];
+		for(int i=0,len=hostUnitIDs.size();i<len;i++){
+			removeIDs[i]=hostUnitIDs.get(i).get("hostUnitId").toString();
+		}
+		deleteByIds(removeIDs);
+		for(int i=0,len=hostUnits.length;i<len;i++){
+			HostUnit hostUnit=new HostUnit();
+			hostUnit.setGameId(gameID);
+			hostUnit.setHostUnitName(hostUnits[i]);
+			hostUnit.setType("0");
+			saveEntity(hostUnit);
+		}
+		for(int i=0,len=secondUnits.length;i<len;i++){
+			HostUnit hostUnit=new HostUnit();
+			hostUnit.setGameId(gameID);
+			hostUnit.setHostUnitName(secondUnits[i]);
+			hostUnit.setType("1");
+			saveEntity(hostUnit);
+		}
+		return true;
+	}
+	
 }

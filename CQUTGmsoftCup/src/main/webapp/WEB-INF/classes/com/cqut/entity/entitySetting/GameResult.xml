@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+	<relation>
+		<source>
+			gameResult.teamId
+		</source>
+		<target classAlias="mo"  linkType="0">
+			team.teamId
+		</target>
+	</relation>
+	<relation>
+		<source>
+			mo.captianId
+		</source>
+		<target classAlias="ur"  linkType="0">
+			user.userID
+		</target>
+	</relation>
+</setting>

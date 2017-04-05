@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 	$('#game').Watermark("请输入大赛名称", "#8f8f8f");
 	var codeTableTable = $("#gameTable");
@@ -23,7 +22,7 @@ var gridSetting = {
 	dwrFun : GameService.findMapByPropertiesWithLimit,
 	dwrCountFun : GameService.findCountByProperties,
 	condition : "",
-	searchCondition : "type=0",
+	searchCondition : "",
 	selectCondition : '',
 	needLink : true,
 	dwr : true,
@@ -36,24 +35,24 @@ var gridSetting = {
 	colModel : [ {
 		//代号	
 		key : true,
-		name : 'hu_gameId',
-		index : 'hu_gameId',
+		name : 'gameId',
+		index : 'gameId',
 		hidden : true
 	}, {
 		name:'gameName',
 		index:'gameName',
 		align:'center'
 	},{
-		name : 'startTime',
-		index : 'startTime',
+		name : 'signUpStartTime',
+		index : 'signUpStartTime',
 		align:'center',
 		formatter:function(data){
 			return DateUtil.dateDiffMills(data);
 		}
 	}, {
 		//名称
-		name : 'endTime',
-		index : 'endTime',
+		name : 'sigeUpEndTime',
+		index : 'sigeUpEndTime',
 		align:'center',
 		formatter:function(data){
 			return DateUtil.dateDiffMills(data);
@@ -78,8 +77,8 @@ var gridSetting = {
 			return type;
 		}
 	},{
-		name : 'hu_hostUnitName',
-		index : 'hu_hostUnitName',
+		name : 'hostUnit',
+		index : 'hostUnit',
 		align:'center'
 	}, {
 		//父亲节点
@@ -140,8 +139,8 @@ function codetableColumn_formater(data, d2, d3, d4) {
 	var alink = "";
 	if(state==0){  //停用
 		alink =   "<a href='javascript:void(0)' onclick=\"agree('" + d2.rowId + "');\"><span class='sheetWord'>申请发布</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"
-		+"<a href='javascript:void(0)' onclick=\"agree('" + d2.rowId + "');\"><span class='sheetWord'>设置竞赛流程</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"
-			+ "<a href='javascript:void(0)' onclick=\"exit('"+ d2.rowId+ "','"+d3.gameName+"','"+d3.year+"','"+d3.startTime+"','"+d3.endTime+"');\"><span class='sheetWord'>编辑</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"	
+		+"<a href='javascript:void(0)' onclick=\"setGameStep('" + d2.rowId + "');\"><span class='sheetWord'>设置竞赛流程</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"
+			+ "<a href='javascript:void(0)' onclick=\"exit('"+ d2.rowId + "');\"><span class='sheetWord'>编辑</span></a>&nbsp;&nbsp;&nbsp;&nbsp;"	
 		+ "<a href='javascript:void(0)' onclick=\"deleteFun('"+ d2.rowId+ "');\"><span class='sheetWord'>删除</span></a>&nbsp;&nbsp;&nbsp;&nbsp;";
 	}		
 	else if(state==1){
@@ -204,30 +203,47 @@ function agreeNot(id){
 }
 
 //编辑
-function exit(id,name,year,startTime,endTime){
-	DialogUtil.openFloatWindow("module/gameManager/gameEdit.jsp",{name:name,year:year,startTime:startTime,endTime:endTime},{EVENT_OK:function(param){
-   		 	GameService.updateEntity(param,"gameId='"+id+"'",function(data){
+function exit(id){
+	DialogUtil.openFloatWindow("module/gameManager/gameEdit.jsp",id,{EVENT_OK:function(param){
+   		 	GameService.updateData(param.game,"gameId='"+id+"'",function(data){
    		 		if(data){
-   		 			mWin.ok("编辑成功");
-   		 			quickSearch();
-   		 		}
-   		 		else{
+	   		 		param.hostUnit.gameId=id;
+	   				HostUnitService.updateData(param.hostUnit,function (data){
+	   					mWin.ok("编辑成功");
+	   		 			quickSearch();	
+	   				});
+   		 		}else{
    		 			jAlert("编辑失败");
    		 		}
-   		 	})
+	 		});
    	 }});
 }
 
 function addNew(){
 	DialogUtil.openFloatWindow("module/gameManager/gameAdd.jsp",{},{EVENT_OK:function(param){
-   		 	GameService.saveData(param,function(data){
+   		 	GameService.saveData(param.game,function(data){
    		 		if(data){
-   		 			mWin.ok("新增成功");
-   		 			quickSearch();
+   		 			param.hostUnit.gameId=data;
+   		 			HostUnitService.saveData(param.hostUnit,function (data){
+   		 				if(data){
+	   		 				mWin.ok("新增成功");
+		   		 			quickSearch();
+   		 				}else{
+   		 					jAlert("新增失败");
+   		 				}
+   		 			});
+   		 			
    		 		}
    		 		else{
    		 			jAlert("新增失败");
    		 		}
    		 	})
    	 }});
+}
+
+function setGameStep(id){
+	jQuery("#gameTable").setGridParam( {
+		searchCondition : currentSearchCondition,
+		page:1
+	}).trigger("reloadGrid");
 }

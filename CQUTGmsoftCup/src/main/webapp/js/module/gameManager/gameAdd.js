@@ -7,7 +7,6 @@ var main_params={
 $(document).ready(function() {
     eventBinding();
     getGameType();
-    //main_params.file = $('#upload_info').fileUpload({});
 	$('#name').Watermark("请输入大赛名称", "#8f8f8f");
 	$("#year").Watermark("例如:2016", "#8f8f8f");
 	
@@ -27,12 +26,43 @@ $(document).ready(function() {
 			}
 				
 			if (event.data.type == DialogUtil.EVENT_OK) {
-					var result = {
-						gameName:$("#name").val(),
-						year:$("#year").val(),
-						startTime:$("#startTime").val(),
-						endTime:$("#endTime").val()
-					};
+				var result={};
+				if($("#isMultiStage").val()==0){
+					result= {
+							game:{
+								gameName:$("#gameName").val(),
+								isMultiStage:$("#isMultiStage").val(),
+								signUpStartTime:DateUtil.DateToMS($("#startTime").val()),
+								sigeUpEndTime:DateUtil.DateToMS($("#endTime").val()),
+								competitionType:$("#competitionType").val(),
+								gameType:$("#gameType").val(),
+								level:$("#level").val(),
+								propagandaPath:$("#propagandaPath").attr("data-id")
+							},
+							hostUnit:{
+								hostUnitName:$("#hostUnitName").val(),
+								secondUnitName:$("#secondUnitName").val()
+							}
+						};
+					if($("#competitionType").val()==0){
+						result.game.leastNumbe=$("#leastNumbe").val();
+						result.game.maxNumber=$("#maxNumber").val();
+					}
+				}else{
+					 result = {
+							 game:{
+								gameName:$("#gameName").val(),
+								isMultiStage:$("#isMultiStage").val(),
+								gameType:$("#gameType").val(),
+								level:$("#level").val(),
+								propagandaPath:$("#propagandaPath").attr("data-id")
+							 },
+							 hostUnit:{
+								 hostUnitName:$("#hostUnitName").val(),
+								secondUnitName:$("#secondUnitName").val()
+							 }		
+						};
+				}
 					ChildDialogUtil.doClose(DialogUtil.EVENT_OK,result);
 			} else if (event.data.type == DialogUtil.EVENT_ERROR) {
 					return;
@@ -63,9 +93,11 @@ function hostUnitSelector(type,el){
         $(".panel-confirm").bind("click",function (){
             cb&&cb();
             $(this).parents(".panel-container").addClass("hidden");
+            $(this).parents(".panel-container-image").addClass("hidden");
         });
         $(".panel-cancel").bind("click",function (){
             $(this).parents(".panel-container").addClass("hidden");
+            $(this).parents(".panel-container-image").addClass("hidden");
         });
         $(".image-group-list").delegate("li","mouseover",function (){
         	var options = $(this).children(".image-options");
@@ -80,7 +112,7 @@ function hostUnitSelector(type,el){
         $("#imageClick").bind("click",function (){
         	$("#imageUpload").click();
         });
-        $(".imageUpload").bind("mouseover",function (){
+        $("#imageUpload").bind("mouseover",function (){
         	main_params.fileAgain=false;
         });
     }
@@ -91,7 +123,14 @@ function hostUnitSelector(type,el){
 			imageGroupPanel.find("ul").html();
         }else{
         	$("#dialog-modal").prepend($("#imageGroupTemplate").html());
-        	commonEventBinding();
+        	commonEventBinding(function (){
+        		var ids="",
+        		images=$(".uploadImage");
+        		images.each(function (){
+        			ids+=($(this).attr("src")+",");
+        		});
+        		$("#propagandaPath").attr("data-id",ids.slice(0,ids.length-1));
+        	});
         	initUploadBtn();
         }
     } else{
@@ -175,8 +214,7 @@ function initUploadBtn(){
 				var image=images[i],
 					imageSrc=image.savePath,
 					imageID=image.id;
-				console.log(image);
-				!main_params.fileAgain?addImage(imageSrc,imageID,$(".image-group-list")):main_params.currentImage.attr("src",imageSrc).attr("data-id",id);
+				!main_params.fileAgain?addImage(imageSrc,imageID,$(".image-group-list")):main_params.currentImage.attr("src",imageSrc).attr("data-id",imageID);
 			}
 		},
 		hideUploadFile:true
@@ -227,5 +265,11 @@ function eventBinding(){
     });
     $("#propagandaPath").bind("click",function (){
         hostUnitSelector(2,this);
+    });
+    $("#competitionType").bind("change",function (){
+		$(this).val()==0?$(".teamLimit").removeClass("hidden"):$(".teamLimit").addClass("hidden");
+    });
+    $("#isMultiStage").bind("change",function (){
+		$(this).val()==0?$(".forStage").removeClass("hidden"):$(".forStage").addClass("hidden");
     });
 }

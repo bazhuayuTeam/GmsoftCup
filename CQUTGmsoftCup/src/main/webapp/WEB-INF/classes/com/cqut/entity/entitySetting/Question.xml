@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+    <relation>
+		<source>
+			Question.questionID
+		</source>
+		<target classAlias="me"  linkType="0">
+			Question.questionID
+		</target>
+	</relation>
+	<relation>
+		<source>
+			me.questionPersonID
+		</source>
+		<target classAlias="op"  linkType="0">
+			Operator.ZGH
+		</target>
+	</relation>
+	<relation>
+		<source>
+			op.SYSTEMFILEID
+		</source>
+		<target classAlias="sys"  linkType="0">
+			SystemFile.ID
+		</target>
+	</relation>	
+</setting>

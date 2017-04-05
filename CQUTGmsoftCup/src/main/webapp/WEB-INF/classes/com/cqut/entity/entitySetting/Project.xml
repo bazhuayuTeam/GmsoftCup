@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setting>
+	<relation>
+		<source>
+			project.fileId
+		</source>
+		<target classAlias="ps"  linkType="0">
+			SystemFile.ID
+		</target>
+	</relation>
+</setting>

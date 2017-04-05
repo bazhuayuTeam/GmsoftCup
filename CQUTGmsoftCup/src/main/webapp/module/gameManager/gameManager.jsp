@@ -16,7 +16,7 @@
 	JQueryLoader loader = new JQueryLoader(
 			"jqGrid,dwr,dialogNew,tips,mask,watermark,wordStyle,commonStyle,pageBasic,searchBox,dialog,util");
 	ServiceLoader serviceLoader = new ServiceLoader(
-			"TeamService,GameService,CodeTableService");
+			"TeamService,GameService,CodeTableService,HostUnitService");
 %>
 <html>
 	<head>

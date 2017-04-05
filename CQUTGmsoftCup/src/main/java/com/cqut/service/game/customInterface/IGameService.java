@@ -32,8 +32,8 @@ public interface IGameService {
 	public List<Game> findGameByProperties(String[] properties,
 			String condition, boolean needLink, int index, int limit);
 	
-	public Map<String, Object> getGame(String[] properties,
-			String condition, boolean needLink);
+	public Map<String, Object> getGame(String[] gameProperties,String[] hostUnitProperties,String gameCondtion,
+			String hostUnitcondition, boolean needLink);
 
 	public Game getGameEntity(String[] properties,
 			String condition, boolean needLink);
