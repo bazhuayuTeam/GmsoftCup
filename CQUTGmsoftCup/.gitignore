@@ -1,5 +1,9 @@
 .babelCache
+.classpath
+.mymetadata
+.project
 /node_modules/
+/.settings/
 /dist/
 /.svn/
 /webapp/WEB-INF/
