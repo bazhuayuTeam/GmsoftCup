@@ -11,7 +11,7 @@
 	JQueryLoader loader = new JQueryLoader(
 			"jqGrid,dialog,watermark,dwr,dialogNew,userDialogValid,verification,timepicker,date,util,file,commonStyle,addAndEdit,dropDownBox");
 	ServiceLoader serviceLoader = new ServiceLoader(
-	"GameStepService,CodeTableService,StandardVersionService");
+	"GameStepService,CodeTableService,StandardVersionService,SystemFileService");
 %>
 <html>
 	<head>
@@ -44,16 +44,17 @@
 						<td class="lableWord">评审标准</td>
 						<td style="width: 170px;">
 							<select id="standardVersionName">
+								<option value="">请选择评审标准</option>
 							</select>
 						</td>
 					</tr>
-					<tr class="forStage">
+					<tr class="forStandard">
 						<td class="lableWord">评审开始时间</td>
 						<td>
 							<input id="checkStartTime" placeholder="请输入评审开始时间" style="background-color:#fff;border:1px solid #AFAFAF;" fieldtype="timepicker" class="inputEdit" type="text" field='distributeTime' save='true' format="yyyy-MM-dd mm:ss" disabled="disabled" />
 						</td>
 					</tr>
-					<tr class="forStage">
+					<tr class="forStandard">
 						<td class="lableWord">评审结束时间</td>
 						<td>
 							<input id="checkEndTime" placeholder="请输入评审结束时间" style="background-color:#fff;border:1px solid #AFAFAF;" fieldtype="timepicker" class="inputEdit" type="text" field='distributeTime' save='true' format="yyyy-MM-dd mm:ss" disabled="disabled" />
@@ -84,6 +85,7 @@
 						<td class="lableWord">作品模板</td>
 						<td>
 							<button id="fileID">点击上传</button>
+							<div class="hidden" id="fileUpload"></div>
 						</td>
 					</tr>		
 				</table>

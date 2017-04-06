@@ -1,14 +1,41 @@
 
+var pageData={
+	id:null
+};
+var main_params={
+		file:false
+};
+
 $(document).ready(function() {
-	initGame();
-	initType();
-	
-	FormUtil.createComponent( [ "endTime" ],"timepicker");
+	eventBinding();
+	main_params.file=$("#fileUpload").fileUpload({
+		uploadComplete:function (){
+			var files=main_params.file.getUploadedFiles();
+			var fileName=main_params.file.getUploadedFilesName();
+			if(files&&files.length>0){
+				var file=files[files.length-1],
+					fileSrc=encodeURI(file.savePath),
+					fileID=file.id;
+				$(".file-list").remove();
+				$("#fileID").attr("data-src",fileSrc);
+				addFile(fileSrc,fileName[fileName.length-1],fileID);
+			}
+		},
+		hideUploadFile:true
+	});
+	if(ChildDialogUtil.getExchangeData){
+		 data = ChildDialogUtil.getExchangeData();
+		 getProcess();
+		 getStandardVersion(data);
+	}
+	FormUtil.createComponent( [ "gameTime" ],"timepicker");
+	FormUtil.createComponent( [ "checkStartTime" ],"timepicker");
+	FormUtil.createComponent( [ "checkEndTime" ],"timepicker");
 	FormUtil.createComponent( [ "startTime" ],"timepicker");
-	
+	FormUtil.createComponent( [ "endTime" ],"timepicker");
 	//创建控件
 	$("#dialog-modal").createDialog({
-		height : 310,
+		height :500,
 		width : 400,
 		resizable : false,
 		modal : true,
@@ -20,10 +47,15 @@ $(document).ready(function() {
 				
 			if (event.data.type == DialogUtil.EVENT_OK) {
 					var result = {
-						gameID:$("#game").val(),
-						gameStep:$("#type").val(),
-						startTime:DateUtil.DateToMS($.trim($('#startTime').val())),
-						endTime:DateUtil.DateToMS($.trim($('#endTime').val()))
+						processID:$("#processID").val(),
+						gameTime:DateUtil.DateToMS($("#gameTime").val()),
+						standardVersionID:$("#standardVersionName").val(),
+						checkStartTime:DateUtil.DateToMS($("#checkStartTime").val())||"",
+						checkEndTime:DateUtil.DateToMS($("#checkEndTime").val())||"",
+						works:$("#works").val(),
+						startTime:DateUtil.DateToMS($("#startTime").val())||"",
+						endTime:DateUtil.DateToMS($("#endTime").val())||"",
+						fileID:$("#fileID").attr("data-src")||""
 					};
 					ChildDialogUtil.doClose(DialogUtil.EVENT_OK,result);
 			} else if (event.data.type == DialogUtil.EVENT_ERROR) {
@@ -35,57 +67,82 @@ $(document).ready(function() {
 	});
 });
 
-function initGame(){
-	var html="";
-	dwr.engine.setAsync(false);
-	GameService.findMapByPropertiesQuick(['gameId','gameName'],"1=1 order by startTime",false,function(data){
-		for(var i=0;i<data.length;i++){
-			html+="<option value='"+data[i].gameId+"'>"+data[i].gameName+"</option>"
+function addFile(src,name,id){
+	$("#fileID").parent().append('<div class="file-list"><a style="text-decoration:underline;color:blue;" href="'+src+'" download="">'+decodeURI(name)+'</a><a style="margin-left:5px;color:red;" data-id="'+id+'" onclick="removeFile(this)">删除</button></a>');
+}
+function getProcess(){
+	CodeTableService.findMapByPropertiesQuick(["codeTableCode","codeTableName"],"parentCode='task'",false,function (data){
+		var processHTML="";
+		for(var i=0,len=data.length;i<len;i++){
+			processHTML+=("<option value='"+data[i].codeTableCode+"'>"+data[i].codeTableName+"</option>");
 		}
-	})
-	dwr.engine.setAsync(true);
-	$("#game").append(html);
+		$("#processID").append(processHTML);
+	});
 }
 
-function initType(){
-	var html="";
-	var id=$("#game").val();
-	$("#type").empty();
-	dwr.engine.setAsync(false);
-	CodeTableService.findMapByPropertiesQuick(['codeTableName',"codeTableCode"],
-		"codeTableCode like 'gameStep%' and hasChild='0' and codeTableCode not in(select distinct gameStep from gameStep where gameID='"+id+"')",false,function(data){
-		for(var i=0;i<data.length;i++){
-			html+="<option value='"+data[i].codeTableCode+"'>"+data[i].codeTableName+"</option>"
+function getStandardVersion(id){
+	StandardVersionService.findMapByPropertiesQuick(["standardVersionID","standardVersionName"],"",false,function (data){
+		var standardVersionHTML="";
+		for(var i=0,len=data.length;i<len;i++){
+			standardVersionHTML+=("<option value='"+data[i].standardVersionID+"'>"+data[i].standardVersionName+"</option>");
 		}
-	})
-	dwr.engine.setAsync(true);
-	$("#type").append(html);
+		$("#standardVersionName").append(standardVersionHTML);
+	});
 }
 
+//验证输入框是否为空
 userDialogValid.valid = function(){
-	var type =$("#type").val();
-	
+	var name=$("#name").val();
+	var works=$("#works").val();
+	var standardVersionID=$("#standardVersionName").val();
 	var startTime=$("#startTime").val();
 	var endTime=$("#endTime").val();
-	
-	var startTime1 = DateUtil.DateToMS($.trim($('#startTime').val()));
-	var endTime1 = DateUtil.DateToMS($.trim($('#endTime').val()));
-	if(type===""||!type){
-		jAlert("请选择竞赛类别");
+	if(name==""){
+		jAlert("请输入大赛名称");
+		$("#name").focus();
+		return false;
+	}else if(standardVersionID==""){
+		jAlert("请选择评审标准");
+		$("#standardVersionName").focus();
 		return false;
 	}
-	else if(startTime==""||startTime=="请输入报名开始时间"){
+	else if(works==1&&startTime==""){
 		jAlert("请输入报名开始时间");
 		$("#startTime").focus();
 		return false;
 	}
-	else if(endTime==""||endTime=="请输入报名截止时间"){
+	else if(works==1&&endTime==""){
 		jAlert("请输入报名截止时间");
 		$("#endTime").focus();
 		return false;
 	}
-	else if(startTime1>endTime1){
-		jAlert("结束时间不能小于开始时间!");
-		return false;
+};
+function removeFile(el){
+	var that=$(el);
+	var r=confirm("确定要删除文件");
+	if(that.attr("data-id")!="0"){
+		r&&main_params.file.emptyFile(that.attr("data-id"));
 	}
+	r&&that.parent().remove();
+}
+function eventBinding(){
+	$("#standardVersionName").bind("change",function (){
+		var that=$(this);
+		if(that.val()!=""){
+			$(".forStandard").removeClass("hidden");
+		}else{
+			$(".forStandard").addClass("hidden");
+		}
+	});
+	$("#works").bind("change",function (){
+		var that=$(this);
+		if(that.val()==1){
+			$(".forStage").removeClass("hidden");
+		}else{
+			$(".forStage").addClass("hidden");
+		}
+	});
+	$("#fileID").bind("click",function (){
+		$(".MultiFile-applied").click();
+	});
 }

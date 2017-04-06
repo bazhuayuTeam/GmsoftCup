@@ -24,4 +24,12 @@
 			GameStepDetail.parentID
 		</target>
 	</relation>
+	<relation>
+		<source>
+			gsd.processID
+		</source>
+		<target classAlias="ct"  linkType="0">
+			CodeTable.codeTableCode
+		</target>
+	</relation>
 </setting>

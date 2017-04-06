@@ -12,10 +12,13 @@ import com.cqut.service.util.fileManage.excel.ExcelService;
 import com.cqut.dao.common.ICommonDao;
 import com.cqut.dao.gameStepDetail.customInterface.IGameStepDetailEntityDao;
 import com.cqut.dao.gameStepDetail.customInterface.IGameStepDetailMapDao;
+import com.cqut.entity.gameStep.GameStep;
 import com.cqut.entity.gameStepDetail.GameStepDetail;
 
 import com.cqut.service.codeTable.CodeTableService;
+import com.cqut.service.gameStep.GameStepService;
 import com.cqut.service.gameStepDetail.customInterface.IGameStepDetailService;
+import com.cqut.util.BeanUtil;
 
 @Controller  
 @RemoteProxy
@@ -29,6 +32,8 @@ public class GameStepDetailService implements IGameStepDetailService {
 	private ICommonDao commonDao;
 	@Resource(name = "codeTableService")
 	private CodeTableService codeTableService;
+	@Resource(name = "gameStepService")
+	private GameStepService gameStepService;
 
 	@RemoteMethod
 	public List<Map<String, Object>> findMapByPropertiesWithLimit(String[] properties,
@@ -164,5 +169,12 @@ public class GameStepDetailService implements IGameStepDetailService {
 		return false;
 	}
 	
-
+	@RemoteMethod
+	public boolean saveData(GameStepDetail gameStepDetail,GameStep gameStep) {
+		String gameStepID=BeanUtil.createId();
+		gameStep.setGameStepID(gameStepID);
+		gameStepService.saveEntity(gameStep);
+		gameStepDetail.setParentID(gameStepID);
+		return commonDao.merge(gameStepDetail)!= null ? true : false;
+	}
 }

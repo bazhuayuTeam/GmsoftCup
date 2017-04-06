@@ -253,7 +253,6 @@
 	
 	// 删除文件
 	function deleteFile(id) {
-		if(confirm("确认要删除吗？")){
 			$('#upload_info').find("span[id^='uploadedFile_']").each(function(index,cur){
 				if(cur.id == 'uploadedFile_'+id){
 					var div = $('.u-file-waiting');
@@ -274,12 +273,10 @@
 						temp.css('display','none');
 					}
 			});
-		}
 		/*
 		 * confirm('确认要删除吗？',function(){
 			
 		});*/
-		return false;
 	}
 	
 	// 删除所有

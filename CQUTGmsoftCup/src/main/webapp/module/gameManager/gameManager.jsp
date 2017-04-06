@@ -16,7 +16,7 @@
 	JQueryLoader loader = new JQueryLoader(
 			"jqGrid,dwr,dialogNew,tips,mask,watermark,wordStyle,commonStyle,pageBasic,searchBox,dialog,util");
 	ServiceLoader serviceLoader = new ServiceLoader(
-			"TeamService,GameService,CodeTableService,HostUnitService");
+			"TeamService,GameService,CodeTableService,HostUnitService,GameStepDetailService");
 %>
 <html>
 	<head>
@@ -62,7 +62,7 @@ a {
 				<div id="gamePager"></div>
 			</div>
 		</div>
-		<div id="gameStepTableContainer" style="position: absolute; top: 150px; bottom: 0; left: 18px; width: auto; float: left; height: auto; right: 20px;display:none;">
+		<div id="gameStepTableContainer" class="hidden" style="position: absolute; top: 150px; bottom: 0; left: 18px; width: auto; float: left; height: auto; right: 20px;">
 			<div id="MainStepArea" style="width: 100%;">
 				<table id="gameStepTable" border="0" width="100%"></table>
 				<div id="gameStepPager"></div>

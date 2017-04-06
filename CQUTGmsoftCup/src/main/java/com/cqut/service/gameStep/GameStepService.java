@@ -146,6 +146,4 @@ public class GameStepService implements IGameStepService {
 		}
 		return false;
 	}
-	
-
 }

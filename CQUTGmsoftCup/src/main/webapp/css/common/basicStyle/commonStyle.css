@@ -50,6 +50,9 @@ img{
 	border:0;
 }
 
+.hidden{
+	display:none!important;
+}
 
 /*********标题-截止时间栏***********/
 .drawLineDiv{

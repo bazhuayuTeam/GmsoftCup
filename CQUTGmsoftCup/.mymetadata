@@ -3,11 +3,11 @@
   type="WEB"
   name="CQUTGmsoftCup"
   id="myeclipse.1347778796009"
-  context-root="/CQUTGmsoftCup"
-  j2ee-spec="5.0"
+  context-root="/CQUTProfessionalAssessmentSys"
+  j2ee-spec="6.0"
   archive="CQUTGmsoftCup.war">
   <attributes>
-    <attribute name="webrootdir" value="/src/main/webapp" />
+    <attribute name="webrootdir" value="src/main/webapp" />
   </attributes>
 </project-module>
 

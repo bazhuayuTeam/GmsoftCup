@@ -1,3 +1,7 @@
+var main_params={
+		stepID:false,
+		gameID:false
+};
 $(document).ready(function() {
 	$('#game').Watermark("请输入大赛名称", "#8f8f8f");
 	var codeTableTable = $("#gameTable");
@@ -155,13 +159,13 @@ var gridStepSetting = {
 			index:'me_gameName',
 			align:'center'
 		},{
-			name : 'gs_gameStepName',
-			index : 'gs_gameStepName',
+			name : 'ct_codeTableName',
+			index : 'ct_codeTableName',
 			align:'center'
 		}, {
 			//名称
-			name : 'gs_startTime',
-			index : 'gs_startTime',
+			name : 'gsd_gameTime',
+			index : 'gsd_gameTime',
 			align:'center',
 			formatter:function(data){
 				return DateUtil.dateDiffMills(data);
@@ -180,6 +184,7 @@ var gridStepSetting = {
 			index : 'gsd_startTime',
 			align:'center',
 			formatter:function(data){
+				console.log(data);
 				return DateUtil.dateDiffMills(data);
 			}
 		}, {
@@ -290,7 +295,7 @@ function agreeNot(id){
 	var game={
 		gameId:id,
 		state:0
-	}
+	};
 	GameService.updateEntity(game,"gameId='"+id+"'",function(data){
 		if(data){
 			mWin.ok("停用成功");
@@ -320,7 +325,9 @@ function exit(id){
 }
 
 function addNew(){
-	DialogUtil.openFloatWindow("module/gameManager/gameAdd.jsp",{},{EVENT_OK:function(param){
+	var isStep=$("#gameStepTableContainer").hasClass("hidden");
+	if(isStep){
+		DialogUtil.openFloatWindow("module/gameManager/gameAdd.jsp",{},{EVENT_OK:function(param){
    		 	GameService.saveData(param.game,function(data){
    		 		if(data){
    		 			param.hostUnit.gameId=data;
@@ -336,13 +343,29 @@ function addNew(){
    		 		else{
    		 			jAlert("新增失败");
    		 		}
-   		 	})
-   	 }});
+   		 	});
+   	 	}});
+	}else{
+		DialogUtil.openFloatWindow("module/gameStepManager/gameAdd.jsp",{},{EVENT_OK:function(param){
+			var gameStepParam={
+				gameId:main_params.gameID	
+			};
+			GameStepDetailService.saveData(param,gameStepParam,function(data){
+		 		if(data){
+		 			mWin.ok("新增成功");
+		 			setGameStep(main_params.gameID);	
+		 		}else{
+		 			jAlert("新增失败");
+		 		}
+			});
+   	 	}});
+	}
 }
 
 function setGameStep(id){
-	$("#gameStepTableContainer").css("display","block");
-	$("#gameTableContainer").css("display","none");
+	main_params.gameID=id;
+	$("#gameStepTableContainer").removeClass("hidden");
+	$("#gameTableContainer").addClass("hidden");
 	$(".searchList").css("visibility","hidden");
 	jQuery("#gameStepTable").setGridParam( {
 		searchCondition : "gs.gameID='"+id+"'",
@@ -352,13 +375,11 @@ function setGameStep(id){
 
 function editStep(id){
 	DialogUtil.openFloatWindow("module/gameStepManager/gameEdit.jsp",id,{EVENT_OK:function(param){
-		 	GameService.updateData(param.game,"gameId='"+id+"'",function(data){
+		 	GameStepDetailService.updateEntity(param,"gameStepID='"+id+"'",function(data){
 		 		if(data){
-   		 		param.hostUnit.gameId=id;
-   				HostUnitService.updateData(param.hostUnit,function (data){
-   					mWin.ok("编辑成功");
-   		 			quickSearch();	
-   				});
+		 			mWin.ok("编辑成功");
+		 			console.log();
+		 			setGameStep(main_params.gameID);	
 		 		}else{
 		 			jAlert("编辑失败");
 		 		}
