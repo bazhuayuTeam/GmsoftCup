@@ -177,4 +177,21 @@ public class GameStepDetailService implements IGameStepDetailService {
 		gameStepDetail.setParentID(gameStepID);
 		return commonDao.merge(gameStepDetail)!= null ? true : false;
 	}
+	
+	@RemoteMethod
+	public boolean deleteStep(String id) {
+		try {
+			List<Map<String,Object>> gameStepDetails=findMapByPropertiesQuick(new String[]{"gameStepDetailID"}, "parentID='"+id+"'", false);
+			String[] ids=new String[gameStepDetails.size()];
+			for(int i=0,len=gameStepDetails.size();i<len;i++){
+				ids[i]=gameStepDetails.get(i).get("gameStepDetailID").toString();
+			}
+			deleteByIds(ids);
+			gameStepService.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

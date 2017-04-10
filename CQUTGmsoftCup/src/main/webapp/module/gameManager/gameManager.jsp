@@ -55,7 +55,10 @@ a {
 				<button id="searchButton" onclick="quickSearch();" class="searchButton">搜索</button>
 			</li>
 		</ul>
-		
+		<div class="navigate hidden" style="position: fixed;top:125px;left:18px;">
+			<span><img src="images/navigate/location.png"/></span>
+			<span id="currentPosition">当前位置：</span>
+		</div>
 		<div id="gameTableContainer" style="position: absolute; top: 150px; bottom: 0; left: 18px; width: auto; float: left; height: auto; right: 20px;">
 			<div id="MainArea" style="width: 100%;">
 				<table id="gameTable" border="0" width="100%"></table>
@@ -66,6 +69,12 @@ a {
 			<div id="MainStepArea" style="width: 100%;">
 				<table id="gameStepTable" border="0" width="100%"></table>
 				<div id="gameStepPager"></div>
+			</div>
+		</div>
+		<div id="gameStepDetailTableContainer" class="hidden" style="position: absolute; top: 150px; bottom: 0; left: 18px; width: auto; float: left; height: auto; right: 20px;">
+			<div id="MainStepDetailArea" style="width: 100%;">
+				<table id="gameStepDetailTable" border="0" width="100%"></table>
+				<div id="gameStepDetailPager"></div>
 			</div>
 		</div>
 		<script type="text/javascript" src="js/module/gameManager/gameManager.js">

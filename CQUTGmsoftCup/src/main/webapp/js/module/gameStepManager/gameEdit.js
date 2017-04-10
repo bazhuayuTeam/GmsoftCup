@@ -127,21 +127,6 @@ userDialogValid.valid = function(){
 		$("#name").focus();
 		return false;
 	}
-	else if(year==""){
-		jAlert("请输入年份");
-		$("#year").focus();
-		return false;
-	}
-	else if(startTime==""){
-		jAlert("请输入报名开始时间");
-		$("#startTime").focus();
-		return false;
-	}
-	else if(endTime==""){
-		jAlert("请输入报名截止时间");
-		$("#endTime").focus();
-		return false;
-	}
 };
 function removeFile(el){
 	var that=$(el);

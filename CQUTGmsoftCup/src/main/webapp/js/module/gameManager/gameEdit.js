@@ -75,8 +75,11 @@ $(document).ready(function() {
 
 function getData(){
 	if(ChildDialogUtil.getExchangeData){
-		var data=ChildDialogUtil.getExchangeData();
+		var passParams=ChildDialogUtil.getExchangeData(),
+		data=passParams.id,
+		type=passParams.type;
 		GameService.getGame(["gameName","isMultiStage","signUpStartTime","sigeUpEndTime","competitionType","leastNumbe","maxNumber","gameType","level","propagandaPath"],["hostUnitName","type"],"gameID='"+data+"'","gameId='"+data+"'",false,function (params){
+			if(params){
 				$("#gameName").val(params.gameName);
 				$("#isMultiStage").val(params.isMultiStage);
 				$("#startTime").val(DateUtil.dateDiffMills(params.signUpStartTime));
@@ -93,6 +96,9 @@ function getData(){
 				$("#propagandaPath").attr("data-id",params.propagandaPath);
 				$("#competitionType").change();
 				$("#isMultiStage").change();
+			}
+			//设置只读状态
+			type&&$(".ui-dialog-buttonset").children().eq(0).addClass("hidden");
 		});
 	}
 }
@@ -277,21 +283,6 @@ userDialogValid.valid = function(){
 		$("#name").focus();
 		return false;
 	}
-	else if(year==""||year=="例如:2016"){
-		jAlert("请输入年份");
-		$("#year").focus();
-		return false;
-	}
-	else if(startTime==""||startTime=="请输入报名开始时间"){
-		jAlert("请输入报名开始时间");
-		$("#startTime").focus();
-		return false;
-	}
-	else if(endTime==""||endTime=="请输入报名截止时间"){
-		jAlert("请输入报名截止时间");
-		$("#endTime").focus();
-		return false;
-	}
 	else if(startTime1>endTime1){
 		jAlert("结束时间不能小于开始时间!");
 		return false;
@@ -312,6 +303,6 @@ function eventBinding(){
 		$(this).val()==0?$(".teamLimit").removeClass("hidden"):$(".teamLimit").addClass("hidden");
     });
     $("#isMultiStage").bind("change",function (){
-		$(this).val()==0?$(".forStage").removeClass("hidden"):$(".forStage").addClass("hidden");
+		$(this).val()==0?$(".forStage").addClass("hidden"):$(".forStage").removeClass("hidden");
     });
 }
