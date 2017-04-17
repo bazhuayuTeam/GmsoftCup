@@ -59,6 +59,13 @@ public class GameService implements IGameService {
 	}
 	
 	@RemoteMethod
+	public List<Map<String, Object>> findAuditByPropertiesWithLimit(String[] properties,
+			String condition, String sortField, String order, boolean needLink, int curPage, int limit) {
+		List<Map<String, Object>> data = mapDao.findGames(properties, condition, sortField, order, needLink, ((curPage-1)*limit), limit);
+		return data;
+	}
+	
+	@RemoteMethod
 	public List<Map<String, Object>> findGameStep(String[] properties,
 			String condition, String sortField, String order, boolean needLink, int curPage, int limit) {
 		List<Map<String, Object>> data = mapDao.findGames(properties, condition, sortField, order, needLink, ((curPage-1)*limit), limit);
@@ -200,5 +207,27 @@ public class GameService implements IGameService {
 	@RemoteMethod
 	public boolean updateData(Game data,String condtion){
 		return updateEntity(data,condtion);
+	}
+	
+	@RemoteMethod
+	public boolean updateEntities(String[] ids){
+		boolean status=true;
+		Game data=new Game();
+		data.setState("2");
+		for(int i=0,len=ids.length;i<len;i++){
+			status=updateEntity(data,"gameID='"+ids[i]+"'");
+		}
+		return status;
+	}
+	
+	@RemoteMethod
+	public boolean updateNotEntities(String[] ids){
+		boolean status=true;
+		Game data=new Game();
+		data.setState("3");
+		for(int i=0,len=ids.length;i<len;i++){
+			status=updateEntity(data,"gameID='"+ids[i]+"'");
+		}
+		return status;
 	}
 }

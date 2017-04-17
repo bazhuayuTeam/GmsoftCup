@@ -18,6 +18,14 @@
 	</relation>
 	<relation>
 		<source>
+			me.createPersonId
+		</source>
+		<target classAlias="user"  linkType="0">
+			User.userID
+		</target>
+	</relation>
+	<relation>
+		<source>
 			gs.gameStepID
 		</source>
 		<target classAlias="gsd" linkType="0">
